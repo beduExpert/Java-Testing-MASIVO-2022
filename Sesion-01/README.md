@@ -65,7 +65,7 @@ Conceptos a tomar en cuenta para las pruebas de software:
 
 ### Ejecución
 
-La ejecuciÃ³n de las pruebas de software se puede definir como la ejecuciÃ³n de un mÃ©todo o conjunto de pruebas. Esto puede incluir uno o mÃ¡s casos de prueba. La ejecuciÃ³n puede generar dos resultados:
+La ejecución de las pruebas de software se puede definir como la ejecuciÃ³n de un mÃ©todo o conjunto de pruebas. Esto puede incluir uno o mÃ¡s casos de prueba. La ejecución puede generar dos resultados:
 
 #### Verde, pasa
 
@@ -83,9 +83,7 @@ El siguiente ejemplo muestra como probar un flujo cuando se agrega un nuevo entr
 ---
 ### <ins>Ejemplo de estructura de código</ins>
 
-En este ejemplo podemos identificar como se estructura y se desarrolla un flujo de pruebas [Ejemplo 02: Pruebas unitarias](./Ejemplo-02)
-
-Ahora, con base en el anterior ejemplo vamos a iniciar nuestro primer reto donde haremos bajas de entrevistadores [Reto 01: Bajas de entrevistadores](./Reto-01)
+En este ejemplo podemos identificar como se estructura y se desarrolla un flujo de pruebas [Ejemplo 02: Estructura de código](./Ejemplo-02)
 
 ---
 ### <ins>Integración Continua</ins>
@@ -137,9 +135,7 @@ Algunos puntos importantes sobre las pruebas continuas:
   procesos de desarrollo acelerados y a evitar los titulares de los fallos del software
 - Las pruebas continuas esperan que las pruebas se integren en el proceso de desarrollo, no que se añadan al final.
 
-En este ejemplo veremos como hacer una integración continua a un pequeño código [Ejemplo 03: Integración Continua](./Ejemplo-03)
-
-Con base en el ejemplo realiza el siguiente [Reto  02: Definir modelo de datos para entrevistas](./Reto-02)
+En este ejemplo veremos como hacer una integración continua a un pequeño código con Github [Ejemplo 03: Repositorio en GitHub](./Ejemplo-03)
 
 
 ## Postwork :memo:
