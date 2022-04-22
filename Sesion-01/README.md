@@ -3,7 +3,8 @@
 ## :dart: Objetivos
 
 - Ejecutar prueba para un flujo agregando un nuevo entrevistador.
-- 
+- Estructurar de manera correcta un código de programación.
+- Integrar código java con Github
 
 ## ⚙ Requisitos
 
