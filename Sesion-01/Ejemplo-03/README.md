@@ -18,7 +18,7 @@
 
 Para crear un repositorio en GitHub lo primero es ir al botón Nuevo  (en la esquina superior derecha) y seleccionar la opción New repository. 
 
-1
+![1](https://user-images.githubusercontent.com/22419786/164800097-63b05fd4-d93f-4853-a32d-06f9951b9d33.png)
 
 Esto lleva a un formulario donde es necesario indicar las siguientes opciones:
 
@@ -27,12 +27,12 @@ Esto lleva a un formulario donde es necesario indicar las siguientes opciones:
 - **Tipo de repositorio:** el repositorio que estás creando puede ser público o privado. Un repositorio público puede ser visto por todo el mundo, por el contrario, un repositorio privado solo podrá ser visto por ti y las personas que elijas.
 Adicionalmente, es posible crear algunos archivos con el repositorio, pero no es obligatorio. Sin embargo, es una buena idea agregar a nuestros proyectos un archivo README. En este archivo puedes escribir la descripción detallada de tu proyecto que será mostrada a otros usuarios al acceder a tu repositorio.
 
-2
-3
+![2](https://user-images.githubusercontent.com/22419786/164800100-452d77bb-84ab-47d1-a2c4-a0b4e9ab23bf.png)
+![3](https://user-images.githubusercontent.com/22419786/164800105-efca6967-13d3-4fe9-93c1-6bce2fb52b0d.png)
 
 Una vez completes el formulario tienes que hacer clic en el botón Create repository. Esto crea el repositorio y te envía a su página principal, donde puedes seguir configurando otros aspectos relativos a tu repositorio.
 
-4
+![4](https://user-images.githubusercontent.com/22419786/164800139-5a3ed27c-7279-4c46-9158-713fa27857c8.png)
 
 ### Tutorial para subir un código a GitHub paso a paso y actualizar el código.
 
@@ -50,7 +50,7 @@ Lo primero que debes hacer cuando instales Git es establecer tu nombre de usuari
 
 Para establecer el nombre de usuario y la dirección de correo se utilizan los siguientes comandos.
 
-5
+![5](https://user-images.githubusercontent.com/22419786/164800163-3c5450cd-92ef-479e-8fb6-d404d70a2e29.PNG)
  
 Por supuesto, en la primera línea iría tu nombre entre comillas, y en la segunda tu correo.
 
@@ -58,17 +58,17 @@ La opción —global le indica a Git que tiene que utilizar esta configuración 
 
 Para especificar el editor a utilizar puedes usar el siguiente comando.
 
-6
+![6](https://user-images.githubusercontent.com/22419786/164800171-ce5abc30-96d0-413d-9e7c-dcdab537a91c.PNG)
 
 Donde [editor] es el editor a utilizar.
 
 Por ejemplo, si se desea utilizar el editor vim, lo puedes indicar mediante la siguiente instrucción:
 
-7
+![7](https://user-images.githubusercontent.com/22419786/164800178-16265efb-7012-4865-b154-b8c4ace787d7.PNG)
 
 Si quieres comprobar la configuración puedes emplear el comando git config –list para mostrar todas las propiedades establecidas.
 
-8
+![8](https://user-images.githubusercontent.com/22419786/164800189-c07e1ae9-5e59-469e-879c-eeaf49b4e923.png)
 
 #### Paso 1: Obteniendo un Repositorio de Git
 
@@ -78,7 +78,7 @@ Existen dos maneras de obtener un repositorio en Git. La primera es tomar un pro
 
 Si planeas comenzar a gestionar un proyecto con Git debes ir al directorio del proyecto y ejecutar el siguiente comando:
 
-9
+![9](https://user-images.githubusercontent.com/22419786/164800209-ba9e0aab-5cf8-4a2c-a4a4-b0245c25e1ae.PNG)
 
 Esto crea una sub-carpeta llamada .git, la cual contiene la base de datos y los archivos necesarios para que Git sea capaz de gestionar tu proyecto.
 
@@ -90,21 +90,21 @@ Este comando crea una copia local del repositorio remoto, por lo tanto tendrás 
 
 La estructura del comando sería la siguiente:
 
-10
+![10](https://user-images.githubusercontent.com/22419786/164800219-8e5c1beb-3194-4c55-9015-58efd39a6b5e.PNG)
 
 Donde [url] es la dirección del repositorio en el servidor remoto.
 
 Por ejemplo, para clonar el repositorio de Adafruit para sensores DHT se utilizaría el siguiente comando:
 
-11
+![11](https://user-images.githubusercontent.com/22419786/164800231-df47ea1e-853f-406f-8a24-bc7dd935f111.PNG)
 
 En la siguiente figura puedes ver el resultado obtenido en la consola. 
 
-12
+![12](https://user-images.githubusercontent.com/22419786/164800251-218c0aab-e747-4a3b-a0b4-b95ea1dfbbf8.png)
 
 Esto creará una carpeta llamada DHT-sensor-library dentro de la cual se almacenará una copia del proyecto remoto.
 
-13
+![13](https://user-images.githubusercontent.com/22419786/164800257-b5143fa6-9fbf-4936-9a12-8299fd95d6cf.png)
 
 Como puedes apreciar, la carpeta contiene un directorio .git (donde está la base de datos del repositorio) y el área de trabajo con los archivos de la última versión del proyecto.
 
