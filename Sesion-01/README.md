@@ -2,10 +2,8 @@
 
 ## :dart: Objetivos
 
-- Definir que es una prueba unitaria
-- Reconocer la importancia de escribir pruebas que garanticen el correcto funcionamiento de un método, por muy simple
-  que sea
-- Analizar técnicas, recomendaciones y buenas prácticas para escribir pruebas unitarias.
+- Ejecutar prueba para un flujo agregando un nuevo entrevistador.
+- 
 
 ## ⚙ Requisitos
 
@@ -82,13 +80,72 @@ ExistiÃ³ un fallo en la prueba, quiere decir que los resultados esperados cuan
 El siguiente ejemplo muestra como probar un flujo cuando se agrega un nuevo entrevistador [Ejemplo 01: Probar el flujo para añadir un nuevo entrevistador](./Ejemplo-01)
 
 ---
-### <ins>Tema 2: Proceso de Pruebas</ins>
+### <ins>Ejemplo de estructura de código</ins>
 
-- [Ejemplo 02: Pruebas unitarias](./Ejemplo-02)
-    - [Reto 01: Bajas de entrevistadores](./Reto-01)
-- [Ejemplo 03: Como seleccionar casos de prueba](./Ejemplo-03)
-    - [Reto  02: Definir modelo de datos para entrevistas](./Reto-02)
-- [Postwork:](./Postwork/README.md)
+En este ejemplo podemos identificar como se estructura y se desarrolla un flujo de pruebas [Ejemplo 02: Pruebas unitarias](./Ejemplo-02)
+
+Ahora, con base en el anterior ejemplo vamos a iniciar nuestro primer reto donde haremos bajas de entrevistadores [Reto 01: Bajas de entrevistadores](./Reto-01)
+
+---
+### <ins>Integración Continua</ins>
+
+La integración continua es la práctica de desarrollo de software en donde los integrantes de ese equipo de desarrollo, y
+como el nombre lo indica, continuamente integran su trabajo. Ésta integración puede suceder al menos una vez al día lo
+que da lugar a múltiples colaboraciones al día. Las integraciones continuas incluyen ejecución de pruebas para detectar
+fallos tan rápido como sea posible. El no incluir pruebas de las integraciones continuas, puede dar lugar a errores en
+el código que pasan desapercibidas. En caso de encontrar errores en el código, se tendrá que volver a construir la
+integración hasta lograr una libre de fallos.
+
+#### Entornos
+
+Las integraciones continuas pueden realizarse en diferentes entonces, aquí se encuentra una lista de posibles entornos:
+
+- **Entorno de Producción:** Es el entorno en el que se exploran las aplicaciones ejecutadas
+- **Entorno de Pre-Producción:** Es el entorno con las mismas características de el de producción pero con la finalidad
+  de realizar pruebas sobre las aplicaciones y poder ser mandadas a producción.
+- **Entorno de Integración Continua:** Es el entorno donde se manejan y gestionan las ramas (branches) del código.
+- **Entorno Local:** Es el entorno del desarrollador
+
+#### Requisitos Para la Integración Continua
+
+Estos son los requisitos para mantener un flujo de integración continua:
+
+- Mantener un único repositorio con un controlador de versiones, tales como GitHub, GitLab, SVN, etc.
+- Automatizar la construcción
+    - Toda integración se realiza en la rama de desarrollo dentro del entorno de integración
+    - Cada construcción debe incluir la ejecución de pruebas inmediatas
+    - Arreglar fallos inmediatamente
+- Automatizar el despliegue
+- Probar en un entorno de Pre-Producción
+- Facilitar la obtención del último ejecutable
+- Que todo el equipo pueda ver lo que está sucediendo
+
+#### Pruebas Continuas (Continuous Testing)
+
+Las pruebas continuas se basan en la automatización de pruebas integradas, como parte de un proceso de implementación en
+el que el software se valida en entornos de pruebas realistas. La adición de la virtualización del servicio , permite a
+los equipos comenzar a comprobar la calidad del software más temprano en el ciclo de vida, simulando software y sistemas
+dependientes, pero no disponibles. Las pruebas continuas permiten a un equipo de proyecto ejecutar pruebas cuando sea
+necesario, no cuando sea posible.
+
+Algunos puntos importantes sobre las pruebas continuas:
+
+- Las pruebas continuas proporcionan una visión instantánea sobre si un candidato de lanzamiento es demasiado arriesgado
+  para proceder a través del pipeline de entrega.
+- Las pruebas continuas establecen una red de seguridad que ayuda al equipo a proteger la experiencia del usuario en los
+  procesos de desarrollo acelerados y a evitar los titulares de los fallos del software
+- Las pruebas continuas esperan que las pruebas se integren en el proceso de desarrollo, no que se añadan al final.
+
+En este ejemplo veremos como hacer una integración continua a un pequeño código [Ejemplo 03: Integración Continua](./Ejemplo-03)
+
+Con base en el ejemplo realiza el siguiente [Reto  02: Definir modelo de datos para entrevistas](./Reto-02)
+
+
+## Postwork :memo:
+
+Encuentra las indicaciones y consejos para reflejar los avances de tu proyecto de este módulo.
+
+- [Postwork: Analisis y pruebas del entrevistador con integración continua](./Postwork/README.md)
 
 
 
