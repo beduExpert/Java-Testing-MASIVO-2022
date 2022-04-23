@@ -1,49 +1,28 @@
-# Ejemplo #3 - Como seleccionar casos de prueba
+# Ejemplo #3 - Documentar un set de pruebas
 
 ## :dart: Objetivo
 
-- Reconocer la importancia de escribir pruebas que garanticen el correcto funcionamiento de un método, por muy simple
-  que sea
-- Analizar técnicas, recomendaciones y buenas prácticas para escribir pruebas unitarias.
-
+- Elaborar un set de pruebas para la ejecución de casos
 
 
 ## Desarrollo
 
-### Como seleccionar casos de prueba
-Generar casos de prueba efectivos que revelen la presencia de
-fallas es fundamental para el éxito del proceso de pruebas (etapa
-de preparación).
-Idealmente, se debería determinar un conjunto de casos de
-prueba tales que su ejecución exitosa implique que no hay errores
-en el software desarrollado
-Comúnmente este objetivo ideal no se puede lograr debido a las
-limitaciones prácticas y teóricas.
-Cada caso de prueba cuesta dinero: esfuerzo para generarlo,
-tiempo de cómputo para ejecutarlo, esfuerzo para evaluar los
-resultados
-Por lo tanto, el número de casos de prueba necesarios para
-detectar los errores debe ser minimizado para reducir costos
-Los dos objetivos principales del proceso de pruebas:
-- Maximizar el número de errores detectados (cobertura)
-- Reducir al mínimo el número de casos de prueba (costo)
-Como con frecuencia son contradictorios, el problema de
-seleccionar el conjunto de casos de prueba con el que un
-programa debe ser probado se vuelve una tarea muy compleja
+Los casos de prueba se deben documentar teniendo en cuenta varios datos, pero principalmente los siguientes 3 son los más relevantes:
 
-Una estrategia simple que podemos seguir es elegir casos de prueba
-de alguno de los siguientes grupos
+- **Objetivo:** Indica el nombre del caso de prueba.
+- **Descripción de la prueba:** Indica los pasos que se deben seguir para la ejecución de la prueba.
+- **Resultado esperado:** Indica que es lo que espero que me muestre el sistema al finalizar la prueba.
 
-- Casos extremos (edge cases)
-- Caso representativo de un grupo
+![image](https://user-images.githubusercontent.com/22419786/164870500-2fdf89e1-235a-4fdb-8108-c95d62e29e16.png)
 
-Tambien podemos aplicar las siguientes tecnicas de integración
+Adicionalmente se pueden agregar campos a nivel general del set de pruebas como:
 
-- Big bang, combinar todos los componentes y probar el sistema
-como un todo
-- Integración incremental, los componentes se integran y prueban
-poco a poco
-  - Integración descendente (componentes de funcionales)
-  - Integración ascendente (componentes de infraestructura, e.g. acceso
-a BD)
+- **Aplicaciones afectadas:** Con esta información se puede determinar que aplicaciones se consumen en la ejecución de las pruebas.
+- **Prerrequisitos:** Por ejemplo si para modificar un campo el prerrequisito es que ya exista información en dicho campo.
+- **Diseñador del caso:** La persona que elaboró los casos de prueba.
 
+Y a nivel de caso se puede incluir:
+
+- **Dato de la prueba:**  Si existe algun dato en particular para probar.
+- **Veredicto:** Identificar si el caso salió exitoso o fallido 
+- **Complejidad:** Indica que tan compleja es la ejecución del caso de prueba.
