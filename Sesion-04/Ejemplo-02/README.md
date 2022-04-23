@@ -2,9 +2,7 @@
 
 ## :dart: Objetivo
 
-- Analizar qué son las pruebas de tipo black box testing
-- Comparar y distinguir las diferencias entre black box y white box testing
-- Implementar pruebas de caja negra
+- Presentar un ejemplo de partición de equivalencia y valores límite de un ejercicio.
 
 
 ## Desarrollo
