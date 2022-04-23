@@ -14,8 +14,6 @@ entrevistador
 
 - Generar casos de prueba utilizando la técnica de: Análisis de valores límite
 - Generar casos de prueba utilizando la técnica de: Partición de equivalencia
-- Generar casos de prueba utilizando la técnica de: Transición entre estados
-- Generar casos de prueba utilizando la técnica de: Tablas de decisión
 
 <details>
   <summary>Solución</summary>
