@@ -166,10 +166,8 @@ cumplirse para que estos funcionen de forma exitosa. Los casos de uso terminan c
 observables y estado del sistema después de la ejecución. Son útiles para definir las pruebas de aceptación, en las que
 participa el usuario o cliente.
 
-![img.png](assets/img.png)
-
 Ahora veremos un ejemplo de pruebas para la parte de Partición de Equivalencia y Valor Límite [Ejemplo 02: Partición de Equivalencia y Valor Límite](./Ejemplo-02)
-    - [Reto 02: Pruebas con técnicas de caja negra](./Reto-02)
+ para que con esta información podamos iniciar el siguiente reto [Reto 02: Pruebas con técnicas de caja negra](./Reto-02)
 
 ---
 
