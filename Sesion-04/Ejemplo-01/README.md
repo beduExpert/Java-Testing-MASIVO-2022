@@ -2,8 +2,8 @@
 
 ## :dart: Objetivos
 
-- Elaborar casos de uso
-- 
+- Elaborar casos de uso para ejecución de acuerdo a los set de pruebas.
+
 ## Desarrollo
 
 En este ejemplo veremos que información es clave para la elaboración de casos de uso.
