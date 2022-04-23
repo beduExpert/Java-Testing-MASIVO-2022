@@ -27,19 +27,21 @@ El project manager ha definido como objetivo para este sprint añadir las siguie
 
 La definición de hecho (Definition of Done) establece que todo el código generado debe contar con las pruebas unitarias necesarias para validar su correcto funcionamiento.
 
-1. Dentro de tu paquete principal crea las siguientes clases
+Dentro de tu paquete principal crea las siguientes clases:
 
-1. Crear la clase correspondiente al modelo Candidate
+1. Crear la clase correspondiente al modelo Candidate.
 
-1. Crear la clase correspondiente al modelo Interview Type
+2. Crear la clase correspondiente al modelo Interview Type.
 
-1. Crear la clase correspondiente al modelo Interview
+3. Crear la clase correspondiente al modelo Interview.
 
-1. Crear la clase correspondiente al modelo Technology
+4. Crear la clase correspondiente al modelo Technology.
 
-1. Crear la clase correspondiente al modelo Discipline
+5. Crear la clase correspondiente al modelo Discipline.
 
-1. Añade las pruebas que consideres necesarias
+6. Añade las pruebas que consideres necesarias.
+
+7. Los casos de prueba contemplados, se deben incorporar en el documento de casos con toda su información completa.
 
     
 
@@ -56,32 +58,6 @@ ________________________________________________________________________________
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 
-✅ Checklist 
-
-Asegúrate que tu postwork contenga todo lo siguiente, ya que esto se evaluará al término del módulo.
-
-
-- [ ] Existe una clase Interviewer que cuenta con los atributos y métodos definidos en nuestro diagrama.
-
-
-
-
-- [ ] Existe una clase Candidate que cuenta con los atributos y métodos definidos en nuestro diagrama.
-
-
-
-
-- [ ] Existe una clase Interview Type que cuenta con los atributos y métodos definidos en nuestro diagrama.
-
-
-
-
-- [ ] Existe una clase Technology que cuenta con los atributos y métodos definidos en nuestro diagrama.
-
-
-
-
-- [ ] Existe una clase Discipline que cuenta con los atributos y métodos definidos en nuestro diagrama.
 
 
 
