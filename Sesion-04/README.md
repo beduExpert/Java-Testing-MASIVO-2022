@@ -97,17 +97,166 @@ THEN Se desbloquea el botón de continuar y puede finalizar su registro
 
 #### Caso de Uso
 
+Los casos de uso permiten identificar los flujos por los que deben pasar los casos de prueba junto con sus acciones, el siguiente es un ejemplo de lo que debe contener un caso de uso [Ejemplo 01: Casos de Uso](./Ejemplo-01)
+    
+Con base en esta información, iniciaremos el primer reto de esta sesión [Reto 01: Casos de usos](./Reto-01)
 
-- [Ejemplo 01: Casos de Uso](./Ejemplo-01)
-    - [Reto 01: Casos de usos](./Reto-01)
 ---
 
-#### <ins>Tema 4: Prueba del Test Plan</ins>
+### <ins>Técnicas de caja negra</ins>
 
+#### Análisis de valores límite
 
-- [Ejemplo 02: Técnicas de caja negra](./Ejemplo-02)
+Es una prueba de caja negra ampliamente utilizada, que también es la base para la prueba de equivalencia. El análisis de
+valor límite prueba el software con casos de prueba con valores extremos de datos de prueba. Boundary Value Analysis (
+BVA) se utiliza para identificar las fallas o errores que surgen debido a los límites de los datos de entrada.
+
+Por ejemplo: tomar entradas para los datos de un caso de prueba para una sección de edad debe aceptar datos válidos de
+entre 1 y 100. Según el análisis de BVA, el software se probará con cuatro datos de prueba como -1, 1, 100 y 101 para
+verificar la respuesta del sistema utilizando los valores límite.
+
+#### Partición de equivalencia
+
+Esta técnica de diseño de casos de prueba verifica la entrada y la salida dividiendo la entrada en clases equivalentes.
+Los datos deben probarse al menos una vez para garantizar la máxima cobertura de prueba de datos. Es la forma de prueba
+exhaustiva, que también reduce la redundancia de entradas.
+
+Por ejemplo: Tomar entradas para los datos de un caso de prueba para el ejemplo mencionado anteriormente tendrá tres
+clases de las cuales se probará un dato.
+
+Clase válida: 1 a 100 (cualquier número), Clase no válida: -1 (marcando la más baja de la más baja), Clase no válida:
+101 (la más alta de la más alta).
+
+#### Transición entre estados
+
+Esta técnica de prueba utiliza las entradas, salidas y el estado del sistema durante la fase de prueba. Compara el
+software con la secuencia de transiciones o eventos entre los datos de prueba.
+
+Según el tipo de software que se prueba, verifica los cambios de comportamiento de un sistema en un estado particular u
+otro estado mientras mantiene las mismas entradas.
+
+Por ejemplo, una página de inicio de sesión le permitirá ingresar el nombre de usuario y la contraseña hasta tres
+intentos. Cada contraseña incorrecta se enviará al usuario a la página de inicio de sesión. Después del tercer intento,
+el usuario será enviado a una página de error. Este método de transición de estado considera los diversos estados del
+sistema y las entradas para pasar solo a la secuencia correcta de la prueba.
+
+#### Tablas de decisión
+
+Este enfoque crea casos de prueba basados en varias posibilidades. Considera múltiples casos de prueba en un formato
+de tabla de decisión donde cada condición se verifica y se cumple, para pasar la prueba y proporcionar resultados
+precisos. Se prefiere en el caso de varias combinaciones de entrada y múltiples posibilidades.
+
+Por ejemplo, una aplicación de entrega de alimentos verificará varios modos de pago como entrada para realizar el
+pedido: toma de decisiones basada en la tabla.
+
+Caso 1: si el usuario final tiene una tarjeta, el sistema no comprobará si hay efectivo o cupón y tomará medidas para
+realizar el pedido.
+
+Caso 2: Si el usuario final tiene un cupón, no se verificará si tiene una tarjeta o efectivo y se tomarán medidas.
+
+Caso 3: si el usuario final tiene efectivo, se tomará la acción.
+
+Caso 4: si el usuario final no tiene nada, no se tomarán medidas.
+
+#### Pruebas de casos de uso/ funcionales
+
+Los casos de uso describen las interacciones entre actores (que pueden ser usuarios o sistemas) que producen un
+resultado que agrega algún valor. A partir de estos se pueden derivar casos de prueba. Tienen precondiciones que deben
+cumplirse para que estos funcionen de forma exitosa. Los casos de uso terminan con post-condiciones, que son resultados
+observables y estado del sistema después de la ejecución. Son útiles para definir las pruebas de aceptación, en las que
+participa el usuario o cliente.
+
+![img.png](assets/img.png)
+
+Ahora veremos un ejemplo de pruebas para la parte de Partición de Equivalencia y Valor Límite [Ejemplo 02: Partición de Equivalencia y Valor Límite](./Ejemplo-02)
     - [Reto 02: Pruebas con técnicas de caja negra](./Reto-02)
-- [Ejemplo 03: Técnicas de caja blanca](./Ejemplo-03)
+
+---
+
+### <ins>Técnicas de caja blanca</ins>
+
+#### Prueba del camino básico (Path testing)
+
+En la prueba de ruta, escribiremos los gráficos de flujo y probaremos todas las rutas independientes. Aquí, escribir el
+gráfico de flujo implica que los gráficos de flujo representan el flujo del programa y también muestran cómo cada
+programa se agrega entre sí, como podemos ver en la siguiente imagen:
+
+![img.png](assets/img.png)
+
+Y probar todas las rutas independientes implica que suponga una ruta desde main () a la función G, primero configure los
+parámetros y pruebe si el programa es correcto en esa ruta en particular, y de la misma manera pruebe todas las demás
+rutas y corrija los errores.
+
+#### Prueba de ciclo o bucle
+
+En la prueba de bucle, probaremos los bucles como while, for y do-while, etc. y también verificaremos la condición de
+finalización si funciona correctamente y si el tamaño de las condiciones es suficiente.
+
+Por ejemplo: tenemos un programa en el que los desarrolladores han dado alrededor de 50,000 bucles.
+
+```{
+    while (50000)
+    ……
+    ……
+    }
+```
+
+No podemos probar este programa manualmente durante todo el ciclo de 50.000 bucles. Entonces escribimos un pequeño
+programa que ayuda para los 50,000 ciclos, como podemos ver en el programa a continuación, que la prueba TestUno está
+escrita en un lenguaje similar al programa de código fuente, y esto se conoce como prueba unitaria. Y está escrito solo
+por los desarrolladores.
+
+```
+   TestUno {
+    ……
+    ……
+    }    
+```
+
+Como podemos ver en la imagen de abajo, tenemos varios requisitos como 1, 2, 3, 4. Y luego, el desarrollador escribe los
+programas como el programa 1,2,3,4 para las condiciones paralelas. Aquí la aplicación contiene las 100 líneas de código.
+
+![img.png](assets/img2.png)
+
+El desarrollador hará la prueba de caja blanca y probará los cinco programas línea por línea de código para encontrar el
+error. Si encuentran algún error en alguno de los programas, lo corregirán. Y nuevamente tienen que probar el sistema,
+entonces este proceso requiere mucho tiempo y esfuerzo y ralentiza el tiempo de lanzamiento del producto.
+
+Ahora, supongamos que tenemos otro caso, donde los clientes quieren modificar los requisitos, luego el desarrollador
+hará los cambios necesarios y probará los cuatro programas nuevamente, lo que requiere mucho tiempo y esfuerzo.
+
+Estos problemas se pueden resolver de las siguientes formas:
+
+En este caso, escribiremos una prueba para un programa similar donde el desarrollador escribe este código de prueba en
+el lenguaje relacionado como código fuente. Luego ejecutan este código de prueba, que también se conoce como programas
+de prueba unitaria. Estos programas de prueba están vinculados al programa principal y se implementan como pruebas.
+
+![img.png](assets/img3.png)
+
+Por lo tanto, si hay algún requisito de modificación o error en el código, el desarrollador realiza el ajuste tanto en
+el programa principal como en el programa de prueba y luego ejecuta el programa de prueba.
+
+#### Pruebas de condiciones o condicionales
+
+En este tipo de prueba necesitamos validar todas las condiciones para ambos valores: verdadero(true) y falso(false).
+Probando todas las posibles combinaciones
+```
+if(condition) - true  
+{  
+…..  
+……  
+……  
+}  
+else - false  
+{  
+…..  
+……  
+……  
+```
+
+Una prueba de caja blanca la podemos ver en el siguiente ejemplo [Ejemplo 03: Técnicas de caja blanca](./Ejemplo-03)
+
+
 - [Postwork](./Postwork)
 
 
