@@ -2,88 +2,35 @@
 
 ## :dart: Objetivos
 
-- Analizar qué son las pruebas de tipo white box testing
-- Comparar y distinguir las diferencias entre black box y white box testing
-- Implementar pruebas de caja blanca
+- Presentar un ejemplo de pruebas de caja blanca desde Java con JUnit.
 
 
 ## Desarrollo
 
-### Prueba del camino básico (Path testing)
+Primero buscamos una clase de implementación, luego hacemos clic derecho para seleccionar y crear un nuevo Junit.
 
-En la prueba de ruta, escribiremos los gráficos de flujo y probaremos todas las rutas independientes. Aquí, escribir el
-gráfico de flujo implica que los gráficos de flujo representan el flujo del programa y también muestran cómo cada
-programa se agrega entre sí, como podemos ver en la siguiente imagen:
+![image](https://user-images.githubusercontent.com/22419786/164874904-1ef43a75-09b7-4abc-88ea-9d4bd853219f.png)
 
-![img.png](assets/img.png)
+![image](https://user-images.githubusercontent.com/22419786/164874908-8e1a0ba8-32f6-4405-993a-cc6710a8bdf7.png)
 
-Y probar todas las rutas independientes implica que suponga una ruta desde main () a la función G, primero configure los
-parámetros y pruebe si el programa es correcto en esa ruta en particular, y de la misma manera pruebe todas las demás
-rutas y corrija los errores.
+Luego verifique los dos métodos setUp () y tearDown (), estos dos métodos solo se ejecutarán una vez en cada prueba
+ 
+![image](https://user-images.githubusercontent.com/22419786/164874916-1e64c4b9-e0dd-4dea-8549-3ec2f4a37faf.png)
+ 
+Luego, a continuación, elija qué métodos de esta clase desea probar
 
-### Prueba de ciclo o bucle
+![image](https://user-images.githubusercontent.com/22419786/164874923-a145c86b-11d1-4679-805e-ca6ce3d28db1.png)
+ 
+Luego, Finish, puede ver su clase de prueba Junit
 
-En la prueba de bucle, probaremos los bucles como while, for y do-while, etc. y también verificaremos la condición de
-finalización si funciona correctamente y si el tamaño de las condiciones es suficiente.
+![image](https://user-images.githubusercontent.com/22419786/164874927-94c8492b-4291-4747-93c3-3176af288c78.png)
 
-Por ejemplo: tenemos un programa en el que los desarrolladores han dado alrededor de 50,000 bucles.
+Luego, haga clic derecho para ejecutar su clase de prueba, Ejecutar prueba de As-Junit.
 
-```{
-    while (50000)
-    ……
-    ……
-    }
-```
+![image](https://user-images.githubusercontent.com/22419786/164874932-69e9bb5a-6be6-4c04-a778-0a62b5bbb25e.png)
+ 
+Luego, puede ver si hay un problema con mi método. También puede ver a continuación. Cada método de prueba configurado y desgarrado solo se ejecutará una vez
 
-No podemos probar este programa manualmente durante todo el ciclo de 50.000 bucles. Entonces escribimos un pequeño
-programa que ayuda para los 50,000 ciclos, como podemos ver en el programa a continuación, que la prueba TestUno está
-escrita en un lenguaje similar al programa de código fuente, y esto se conoce como prueba unitaria. Y está escrito solo
-por los desarrolladores.
+![image](https://user-images.githubusercontent.com/22419786/164874936-89f29073-ddb8-4a34-8f02-406bcaba991a.png)
 
-```
-   TestUno {
-    ……
-    ……
-    }    
-```
-
-Como podemos ver en la imagen de abajo, tenemos varios requisitos como 1, 2, 3, 4. Y luego, el desarrollador escribe los
-programas como el programa 1,2,3,4 para las condiciones paralelas. Aquí la aplicación contiene las 100 líneas de código.
-
-![img.png](assets/img2.png)
-
-El desarrollador hará la prueba de caja blanca y probará los cinco programas línea por línea de código para encontrar el
-error. Si encuentran algún error en alguno de los programas, lo corregirán. Y nuevamente tienen que probar el sistema,
-entonces este proceso requiere mucho tiempo y esfuerzo y ralentiza el tiempo de lanzamiento del producto.
-
-Ahora, supongamos que tenemos otro caso, donde los clientes quieren modificar los requisitos, luego el desarrollador
-hará los cambios necesarios y probará los cuatro programas nuevamente, lo que requiere mucho tiempo y esfuerzo.
-
-Estos problemas se pueden resolver de las siguientes formas:
-
-En este caso, escribiremos una prueba para un programa similar donde el desarrollador escribe este código de prueba en
-el lenguaje relacionado como código fuente. Luego ejecutan este código de prueba, que también se conoce como programas
-de prueba unitaria. Estos programas de prueba están vinculados al programa principal y se implementan como pruebas.
-
-![img.png](assets/img3.png)
-
-Por lo tanto, si hay algún requisito de modificación o error en el código, el desarrollador realiza el ajuste tanto en
-el programa principal como en el programa de prueba y luego ejecuta el programa de prueba.
-
-### Pruebas de condiciones o condicionales
-
-En este tipo de prueba necesitamos validar todas las condiciones para ambos valores: verdadero(true) y falso(false).
-Probando todas las posibles combinaciones
-```
-if(condition) - true  
-{  
-…..  
-……  
-……  
-}  
-else - false  
-{  
-…..  
-……  
-……  
-```
+ 
