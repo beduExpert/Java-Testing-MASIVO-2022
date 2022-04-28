@@ -25,17 +25,18 @@ Algunos de los datos que se esperan de un entrevistador son: correo, nombre comp
 La persistencia de datos no está en el alcance de este sprint, por lo que los datos serán efímeros viviendo solo en memoria.
 
 ### Instrucciones:
-Crear un repositorio en la cuenta de github de cualquiera de los integrantes y añadir a los demás como colaboradores.
-Durante el curso utilizaremos gradle, por lo que te recomendamos crear el proyecto usando gradle
-Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa en los requerimientos dados
-Hacer push de sus cambios a su repositorio
-Todos los integrantes del equipo deben clonar el repositorio en su computadora
+- Crear un repositorio en la cuenta de github de cualquiera de los integrantes y añadir a los demás como colaboradores.
+- Durante el curso utilizaremos gradle, por lo que te recomendamos crear el proyecto usando gradle
+- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa en los requerimientos dados
+- Hacer push de sus cambios a su repositorio
+- Todos los integrantes del equipo deben clonar el repositorio en su computadora
 
 <details>
   <summary>Solución</summary>
 
-En nuestro menu mostramos las opciones para dar de alta y consultar un entrevistador.
-En este archivo solo vive la logica del menu, dejando la logica propia del proceso de alta o consulta en nuestro archivo Interviewer.java
+1. En nuestro menu mostramos las opciones para dar de alta y consultar un entrevistador.
+2. En este archivo solo vive la logica del menu, dejando la logica propia del proceso de alta o consulta en nuestro archivo Interviewer.java
+  
 Menu.java
 
 package com.test.interviewer;
