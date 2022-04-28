@@ -1,71 +1,192 @@
-# Reto 1 - Técnicas de caja negra: Requerimiento funcional / Caso de uso II
+# Reto 1 - Altas y consultas de entrevistadores
 
 ## :dart: Objetivos
 
-- Analizar qué son las pruebas de tipo black box testing
-- Comparar y distinguir las diferencias entre black box y white box testing
+- PENDIENTE
+
+## ⚙ Requisitos
+
+- IntelliJ IDEA
+- Java
+- Gradle
+- Code with me
+- Una cuenta de GitHub
+
 
 ## Desarrollo
 
-Durante el siguiente reto deberás desarrollar:
+La empresa ABC Technologies desea realizar un sistema que le permita automatizar algunas partes de su proceso para agendar entrevistas técnicas.
 
-- Historia de usuario en formato AS, WANT, SO, para añadir entrevistadores.
-- Criterios de aceptación en formato GWT
-- Casos de Uso
+El project manager ha definido como objetivo para este sprint implementar un sistema que cumpla con las siguientes características:
 
-Deberás considerar los posibles casos "extremos" (_edge cases_), validaciones, errores y posibles excepciones.
+Mediante terminal permite agregar nuevos entrevistadores.
+Mediante terminal se pueden consultar a los entrevistadores existentes en el sistema.
+Algunos de los datos que se esperan de un entrevistador son: correo, nombre completo, tecnologías, entre otras.
+La persistencia de datos no está en el alcance de este sprint, por lo que los datos serán efímeros viviendo solo en memoria.
 
+### Instrucciones:
+Crear un repositorio en la cuenta de github de cualquiera de los integrantes y añadir a los demás como colaboradores.
+Durante el curso utilizaremos gradle, por lo que te recomendamos crear el proyecto usando gradle
+Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa en los requerimientos dados
+Hacer push de sus cambios a su repositorio
+Todos los integrantes del equipo deben clonar el repositorio en su computadora
 
 <details>
   <summary>Solución</summary>
 
-#### Historia de usuario
+En nuestro menu mostramos las opciones para dar de alta y consultar un entrevistador.
+En este archivo solo vive la logica del menu, dejando la logica propia del proceso de alta o consulta en nuestro archivo Interviewer.java
+Menu.java
 
-Añadir entrevistadores
+package com.test.interviewer;
 
-El administrador quiere registrar nuevos entrevistadores en el sistema.
+import java.util.ArrayList;
+import java.util.Scanner;
 
-#### Historia de usuario (As, Want, So)
+public class Menu {
+    Scanner sc;
 
-Añadir entrevistadores
+    public Menu() {
+        sc = new Scanner(System.in);
+        Interviewer.data = new ArrayList<Interviewer>();
 
-AS un usuario administrador I WANT poder registrar nuevos entrevistadores SO los entrevistadores se pueden consultar en el sistema
+        showMainMenu();
+    }
 
-#### Descripción Given, When, Then (GWT)
+    public void showMainMenu() {
+        int option = 0;
 
-Criterios de aceptación
+        while (option != 3) {
+            System.out.println("Seleccione la operacion a realizar:");
+            System.out.println("1. Dar de alta un entrevistador");
+            System.out.println("2. Consultar un entrevistador");
+            System.out.println("3. Salir");
 
-GIVEN un usuario administrador WHEN ingresa los datos del entrevistador THEN se crea su registro en la aplicación
+            option = sc.nextInt();
+            sc.nextLine();
 
+            switch (option) {
+                case 1:
+                    addInterviewer();
+                    break;
+                case 2:
+                    searchInterviewer();
+                    break;
+            }
+        }
+        ;
 
-#### Caso de Uso
+        System.out.println("Programa terminado");
+    }
 
-Precondiciones:
+    public void addInterviewer() {
+        System.out.println("Ingrese el nombre del entrevistador: ");
+        String name = sc.nextLine();
+        System.out.println("Ingrese el apellido del entrevistador: ");
+        String lastName = sc.nextLine();
+        System.out.println("Ingrese el email del entrevistador: ");
+        String email = sc.nextLine();
+        System.out.println("El entrevistador se encuentra activo? (1=Si/2=No)");
+        Boolean isActive = sc.nextInt() == 1;
+        sc.nextLine();
 
-    El usuario cuenta con persisos de administrador
+        Interviewer interviewer = new Interviewer(name, lastName, email, isActive);
+        interviewer.add();
 
-Actor:
+        System.out.println(interviewer.toString());
+    }
 
-    Usuario administrador
+    public void searchInterviewer() {
+        System.out.println("Ingrese el email del entrevistador a consultar:");
+        String email = sc.nextLine();
 
-Input:
+        Interviewer interviewer = Interviewer.getByEmail(email);
 
-    name (string al menos 3 caracteres)
-    last_name (string al menos 3 caracteres)
-    email (string de n caracteres)
+        if (interviewer != null) {
+            System.out.println("Entrevistador encontrado:");
+            System.out.println(interviewer.toString());
+        } else {
+            System.out.println("Entrevistador no encontrado");
+        }
+    }
 
-Output:
+    public static void main(String[] args) {
+        new Menu();
+    }
+}
+Nuestro método save se encarga de guardar el nuevo entrevistador dentro del arreglo de entrevistadores.
+El método getByEmail permite buscar entrevistadores existentes.
+Interviewer.java
 
-    intervieewr_id
+package com.test.interviewer;
 
-Flow:
+import java.io.*;
+import java.util.ArrayList;
 
-    1. Crear el intervieewr correspondiente
-        1.1 Validar el email
-            1.1.1 Si el email es invalido lanzar la excepción InvalidEmail
-        1.2 Crear la nueva instacia d ela clase Interviewer
-        1.4 Guardar la entidad
-        1.5 Responder con el id del nuevo entrevistador
-    2.Enviar la respuesta
+public class Interviewer implements Serializable {
+    static ArrayList<Interviewer> data;
+
+    int id;
+    String name;
+    String lastName;
+    String email;
+    Boolean isActive;
+
+    public Interviewer(
+            String name,
+            String lastName,
+            String email,
+            Boolean isActive
+    ) {
+        this.id = data.size() + 1;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.isActive = isActive;
+    }
+
+    public Interviewer add() {
+        data.add(this);
+        return this;
+    }
+
+    public void save(
+            String name,
+            String lastName,
+            String email,
+            Boolean isActive
+    ) {
+        if (!name.equals(""))
+            this.name = name;
+
+        if (!lastName.equals(""))
+            this.lastName = lastName;
+
+        if (!email.equals(""))
+            this.email = email;
+
+        this.isActive = isActive;
+
+        data.add(this);
+    }
+
+    public static Interviewer getByEmail(String email) {
+        for (Interviewer interviewer : data) {
+            if (interviewer.email.equals(email))
+                return interviewer;
+        }
+
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return "\nID: " + this.id +
+                "\nName: " + this.name +
+                "\nLast Name: " + this.lastName +
+                "\nEmail: " + this.email +
+                "\nIs Active: " + this.isActive + "\n";
+    }
+}
 
 </details>
