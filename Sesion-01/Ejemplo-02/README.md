@@ -1,8 +1,8 @@
-# Ejemplo 2 - Probar el flujo para obtener la información de un entrevistador
+# Ejemplo 2 - Obtener información de un entrevistador
 
 ## :dart: Objetivo
 
-* PENDIENTE
+* Probar el flujo para obtener la información de un entrevistador
 
 ## ⚙ Requisitos
 
@@ -20,6 +20,7 @@
 
 InterviewerTest.java
 
+``` java
 package com.test.interviewer;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -94,3 +95,4 @@ public class InterviewerTest {
         assertNull(result, "Interviewer should not be found");
     }
 }
+```
