@@ -15,9 +15,9 @@
 
 El siguiente es un ejemplo del uso de TestNG en código Java
 
-```java
-build.gradle
 
+build.gradle
+```java
 plugins {
     id 'java'
 }
@@ -44,9 +44,9 @@ test {
 }
 
 ```
-```java
-TestGitHub.java
 
+TestGitHub.java
+```java
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
