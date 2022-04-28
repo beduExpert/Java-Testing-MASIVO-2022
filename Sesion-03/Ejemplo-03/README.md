@@ -15,6 +15,7 @@
 
 El siguiente es un ejemplo del uso de TestNG en código Java
 
+```java
 build.gradle
 
 plugins {
@@ -83,3 +84,4 @@ public class TestGitHub {
     assertEquals(driver.getTitle(), "GitHub");
   }
 }
+```
