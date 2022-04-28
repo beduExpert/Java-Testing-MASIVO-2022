@@ -32,89 +32,43 @@ El siguiente ejemplo muestra las diferencias entre JUnit 4 y 5 a nivel de arquit
 Con base en el ejemplo anterior, vamos a desarrollar el primer reto de esta sesión [Reto 01: Altas y consultas de entrevistadores](./Reto-01)
 
 ---
-### <ins>Tipos de Pruebas de Software</ins>
+### <ins>Ejecución condicional de las pruebas</ins>
 
-Existen diferentes tipos de pruebas de software, en este documento se presentan los tipos según el SUT:
+La API de extensión ExecutionCondition en JUnit Jupiter permite a los desarrolladores habilitar o deshabilitar un contenedor o probar en función de ciertas condiciones mediante programación. El ejemplo más simple de tal condición es la DisabledCondition incorporada que admite la anotación @Disabled (consulte Disabling Tests)
 
-- Aceptación
-- Sistema
-- Integración
-- Componente
-- Unitaria
+En el siguiente ejemplo veremos los diferentes condicionales que se pueden manejar para JUnit [Ejemplo 02: Diferencias entre JUnit 4 y JUnit 5]
 
-#### Aceptación
-
-Se prueba el sistema completo, desde la interfaz hasta la base de datos o de al menos alguna parte del sistema que sea funcional. El objetivo es validar los requireimientos iniciales como son los casos de uso, historias de usuario, etc. Quienes realizan estas pruebas usualmente son los usuarios finales que no formaron parte del desarrollo.
-
-#### Sistema
-
-Se prueba el sistema completo, desde la interfaz hasta la base de datos o de al menos alguna parte del sistema que sea funcional. El objetivo es validar los requireimientos iniciales como son los casos de uso, historias de usuario, etc. Quienes realizan estas pruebas son personas dedicadas a las pruebas que pueden involucrar al usuario, pero no formaron parte del desarrollo.
-
-#### Integración
-
-Se prueban componentes del sistema o subsistemas. El objetivo es verificar la comunicación entre los componentes del sistema o sus subsistemas. Quienes realizan estas pruebas son los desarrolladores incolucrando al usuario.
-
-#### Componente
-
-Se prueban grupos o partes del sistema que en conjunto hacen funcionar un componente o servicio. El objetivo es verificar el funcionamiento correto e independiente de los componentes. Quienes realizan estas pruebas son los desarrolladores incolucrando al usuario.
-
-#### Unitaria
-
-Se prueba una sola clase, objeto, o método. El objetivo es verificar las condiciones del diseño y documentar su comportamiento. Quienes realizan estas pruebas son los desarrolladores incolucrando al usuario.
-
-A continuación se puede ver como se prueba un flujo para obtener la información de un entrevistador [Ejemplo 02: Probar flujo para obtener info de un entrevistador](./Ejemplo-02)
 
 ---
-### <ins>Integración Continua</ins>
+### <ins> Prueba con TestNG </ins>
 
-La integración continua es la práctica de desarrollo de software en donde los integrantes de ese equipo de desarrollo, y
-como el nombre lo indica, continuamente integran su trabajo. Ésta integración puede suceder al menos una vez al día lo
-que da lugar a múltiples colaboraciones al día. Las integraciones continuas incluyen ejecución de pruebas para detectar
-fallos tan rápido como sea posible. El no incluir pruebas de las integraciones continuas, puede dar lugar a errores en
-el código que pasan desapercibidas. En caso de encontrar errores en el código, se tendrá que volver a construir la
-integración hasta lograr una libre de fallos.
+#### ¿Qué es TestNG?
 
-#### Entornos
+TestNG es un marco de pruebas de automatización en el que NG significa "Próxima Generación". TestNG está inspirado en JUnit, que usa las anotaciones (@). TestNG supera las desventajas de JUnit y está diseñado para facilitar las pruebas de un extremo a otro.
 
-Las integraciones continuas pueden realizarse en diferentes entonces, aquí se encuentra una lista de posibles entornos:
+Con TestNG, puedes generar un informe adecuado y puedes saber fácilmente cuántos casos de prueba se pasan, fallan y se omiten. Puedes ejecutar los casos de prueba fallidos por separado.
 
-- **Entorno de Producción:** Es el entorno en el que se exploran las aplicaciones ejecutadas
-- **Entorno de Pre-Producción:** Es el entorno con las mismas características de el de producción pero con la finalidad
-  de realizar pruebas sobre las aplicaciones y poder ser mandadas a producción.
-- **Entorno de Integración Continua:** Es el entorno donde se manejan y gestionan las ramas (branches) del código.
-- **Entorno Local:** Es el entorno del desarrollador
+Por ejemplo:
 
-#### Requisitos Para la Integración Continua
+* Imagina que tienes cinco casos de prueba, escribes un método para cada caso de prueba (supongamos que el programa se escribe usando el método principal sin usar testNG). Cuando ejecutas este programa primero, tres métodos se ejecutan correctamente y el cuarto método falla. Luego corriges los errores presentes en el cuarto método, ahora solo deseas ejecutar el cuarto método porque los primeros tres métodos se ejecutan de todos modos con éxito. Esto no es posible sin utilizar TestNG.
 
-Estos son los requisitos para mantener un flujo de integración continua:
+* Hablando de TestNG con Selenium se genera el archivo testng-failed.xml en la carpeta de salida de la prueba. Si deseas ejecutar solo casos de prueba fallidos, lo único que debes hacer es ejecutar este archivo XML. De esta forma se ejecutarán solo casos de prueba fallidos.
 
-- Mantener un único repositorio con un controlador de versiones, tales como GitHub, GitLab, SVN, etc.
-- Automatizar la construcción
-    - Toda integración se realiza en la rama de desarrollo dentro del entorno de integración
-    - Cada construcción debe incluir la ejecución de pruebas inmediatas
-    - Arreglar fallos inmediatamente
-- Automatizar el despliegue
-- Probar en un entorno de Pre-Producción
-- Facilitar la obtención del último ejecutable
-- Que todo el equipo pueda ver lo que está sucediendo
+##### ¿Por qué utilizar TestNG con Selenium?
 
-#### Pruebas Continuas (Continuous Testing)
+Las pruebas de Selenium predeterminadas no generan un formato adecuado para los resultados. Usando TestNG con Selenium, podemos generar mejores reportes de resultados de pruebas.
 
-Las pruebas continuas se basan en la automatización de pruebas integradas, como parte de un proceso de implementación en
-el que el software se valida en entornos de pruebas realistas. La adición de la virtualización del servicio , permite a
-los equipos comenzar a comprobar la calidad del software más temprano en el ciclo de vida, simulando software y sistemas
-dependientes, pero no disponibles. Las pruebas continuas permiten a un equipo de proyecto ejecutar pruebas cuando sea
-necesario, no cuando sea posible.
+La mayoría de los usuarios de Selenium usan TestNg más que Junit debido a sus ventajas. Hay tantas características de TestNG, pero solo nos centraremos en las más importantes que podemos usar en Selenium. Las siguientes son las características clave de Selenium TestNG:
 
-Algunos puntos importantes sobre las pruebas continuas:
+* Generar el informe en un formato adecuado que incluya una serie de ejecuciones de casos de prueba, la cantidad de casos de prueba aprobados, la cantidad de casos de prueba fallidos y la cantidad de casos de prueba omitidos.
+* Se pueden agrupar varios casos de prueba más fácilmente convirtiéndolos en un archivo testng.xml. En el que puede establecer prioridades sobre qué caso de prueba debe ejecutarse primero.
+* El mismo caso de prueba se puede ejecutar varias veces sin bucles con solo usar la palabra clave llamada "invocation count".
+* Con TestNG, puedes ejecutar varios casos de prueba en varios navegadores.
+* TestNG se puede integrar fácilmente con herramientas como TestNG Maven, Jenkins, etc.
+* Las anotaciones utilizadas en las pruebas son muy fáciles de entender, por ejemplo: @BeforeMethod, @AfterMethod, @BeforeTest, @AfterTest
+* WebDriver no tiene un mecanismo nativo para generar informes. TestNG puede generar el informe en un formato legible.
 
-- Las pruebas continuas proporcionan una visión instantánea sobre si un candidato de lanzamiento es demasiado arriesgado
-  para proceder a través del pipeline de entrega.
-- Las pruebas continuas establecen una red de seguridad que ayuda al equipo a proteger la experiencia del usuario en los
-  procesos de desarrollo acelerados y a evitar los titulares de los fallos del software
-- Las pruebas continuas esperan que las pruebas se integren en el proceso de desarrollo, no que se añadan al final.
-
-En este ejemplo veremos como hacer una integración continua a un pequeño código con Github [Ejemplo 03: Repositorio en GitHub](./Ejemplo-03)
+A continuación veremos un ejemplo de uso de TestNG en JAVA [Ejemplo 03: TestNG](./Ejemplo-03)
 
 
 ## Postwork :memo:
