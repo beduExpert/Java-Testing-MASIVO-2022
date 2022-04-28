@@ -2,7 +2,7 @@
 
 ## :dart: Objetivo
 
-- pendiente
+- Analizar algunas características de TestNG para pruebas Java
 
 ## ⚙ Requisitos
 
