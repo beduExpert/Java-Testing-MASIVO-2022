@@ -1,4 +1,4 @@
-# Reto 1 - Altas y consultas de entrevistadores
+# Reto 2 - Probando nuestro software
 
 ## :dart: Objetivos
 
@@ -20,21 +20,19 @@
 
 ## Desarrollo
 
-La empresa ABC Technologies desea realizar un sistema que le permita automatizar algunas partes de su proceso para agendar entrevistas técnicas.
+Basándonos en el Reto 1, debemos probar que el sistema desarrollado para la empresa ABC Technologies haya podido automatizar algunas partes de su proceso para agendar entrevistas técnicas.
 
-El project manager ha definido como objetivo para este sprint implementar un sistema que cumpla con las siguientes características:
+El project manager ha definido como objetivo para este sprint realizar las pruebas que cumplan con las siguientes características:
 
-Mediante terminal permite agregar nuevos entrevistadores.
-Mediante terminal se pueden consultar a los entrevistadores existentes en el sistema.
-Algunos de los datos que se esperan de un entrevistador son: correo, nombre completo, tecnologías, entre otras.
-La persistencia de datos no está en el alcance de este sprint, por lo que los datos serán efímeros viviendo solo en memoria.
+- Verificar que se puedan agregar nuevos entrevistadores mediante terminal.
+- Verificar se puedan consultar a los entrevistadores existentes en el sistema.
+- Verificar que se hayan guardado los datos esperados de un entrevistador, como son: correo, nombre completo, tecnologías, entre otras.
+- Verificar que los datos vivan en memoria.
 
 ### Instrucciones:
-- Crear un repositorio en la cuenta de github de cualquiera de los integrantes y añadir a los demás como colaboradores.
-- Durante el curso utilizaremos gradle, por lo que te recomendamos crear el proyecto usando gradle
-- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa en los requerimientos dados
+- Se deben incluir todas las pruebas de esta funcionalidad
+- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa
 - Hacer push de sus cambios a su repositorio
-- Todos los integrantes del equipo deben clonar el repositorio en su computadora
 
 <details>
   <summary>Solución</summary>
@@ -42,156 +40,84 @@ La persistencia de datos no está en el alcance de este sprint, por lo que los d
 1. En nuestro menu mostramos las opciones para dar de alta y consultar un entrevistador.
 2. En este archivo solo vive la logica del menu, dejando la logica propia del proceso de alta o consulta en nuestro archivo Interviewer.java
   
-Menu.java
+Realizamos las pruebas correspondientes para añadir un nuevo entrevistador y para obtener un entrevistador existente.
+MenuTest.java
 
 package com.test.interviewer;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class Menu {
-    Scanner sc;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 
-    public Menu() {
-        sc = new Scanner(System.in);
-        Interviewer.data = new ArrayList<Interviewer>();
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-        showMainMenu();
+public class MenuTest {
+    private final InputStream systemIn = System.in;
+    private final PrintStream systemOut = System.out;
+
+    private ByteArrayInputStream testIn;
+    private ByteArrayOutputStream testOut;
+
+    @BeforeEach
+    public void setUpOutput() {
+        testOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOut));
     }
 
-    public void showMainMenu() {
-        int option = 0;
-
-        while (option != 3) {
-            System.out.println("Seleccione la operacion a realizar:");
-            System.out.println("1. Dar de alta un entrevistador");
-            System.out.println("2. Consultar un entrevistador");
-            System.out.println("3. Salir");
-
-            option = sc.nextInt();
-            sc.nextLine();
-
-            switch (option) {
-                case 1:
-                    addInterviewer();
-                    break;
-                case 2:
-                    searchInterviewer();
-                    break;
-            }
-        }
-        ;
-
-        System.out.println("Programa terminado");
+    private void provideInput(String data) {
+        testIn = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testIn);
     }
 
-    public void addInterviewer() {
-        System.out.println("Ingrese el nombre del entrevistador: ");
-        String name = sc.nextLine();
-        System.out.println("Ingrese el apellido del entrevistador: ");
-        String lastName = sc.nextLine();
-        System.out.println("Ingrese el email del entrevistador: ");
-        String email = sc.nextLine();
-        System.out.println("El entrevistador se encuentra activo? (1=Si/2=No)");
-        Boolean isActive = sc.nextInt() == 1;
-        sc.nextLine();
-
-        Interviewer interviewer = new Interviewer(name, lastName, email, isActive);
-        interviewer.add();
-
-        System.out.println(interviewer.toString());
+    private String getOutput() {
+        return testOut.toString();
     }
 
-    public void searchInterviewer() {
-        System.out.println("Ingrese el email del entrevistador a consultar:");
-        String email = sc.nextLine();
-
-        Interviewer interviewer = Interviewer.getByEmail(email);
-
-        if (interviewer != null) {
-            System.out.println("Entrevistador encontrado:");
-            System.out.println(interviewer.toString());
-        } else {
-            System.out.println("Entrevistador no encontrado");
-        }
+    @AfterEach
+    public void restoreSystemInputOutput() {
+        System.setIn(systemIn);
+        System.setOut(systemOut);
     }
 
-    public static void main(String[] args) {
-        new Menu();
-    }
-}
-Nuestro método save se encarga de guardar el nuevo entrevistador dentro del arreglo de entrevistadores.
-El método getByEmail permite buscar entrevistadores existentes.
-Interviewer.java
 
-package com.test.interviewer;
 
-import java.io.*;
-import java.util.ArrayList;
+    @Test
+    public void addNewInterviewer () {
+        final String interviewerName = "Interviewer Name";
+        final String interviewerLastName = "Interviewer Lastname";
+        final String interviewerEmail = "Interviewer Email";
+        final String addNewInterviewerCommand = "1 \n "+ interviewerName + " \n " + interviewerLastName + " \n " + interviewerEmail + " \n 1 \n 3 \n";
+        provideInput(addNewInterviewerCommand);
 
-public class Interviewer implements Serializable {
-    static ArrayList<Interviewer> data;
+        Menu.main(new String[0]);
+        final String output = getOutput();
 
-    int id;
-    String name;
-    String lastName;
-    String email;
-    Boolean isActive;
-
-    public Interviewer(
-            String name,
-            String lastName,
-            String email,
-            Boolean isActive
-    ) {
-        this.id = data.size() + 1;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.isActive = isActive;
+        assertTrue(output.contains(interviewerName));
+        assertTrue(output.contains(interviewerLastName));
+        assertTrue(output.contains(interviewerEmail));
     }
 
-    public Interviewer add() {
-        data.add(this);
-        return this;
-    }
+    @Test
+    public void getInterviewer () {
+        final String interviewerName = "Interviewer Name";
+        final String interviewerLastName = "Interviewer Lastname";
+        final String interviewerEmail = "interviewer@mail.com";
+        final String addNewInterviewerCommand = "1 \n "+ interviewerName + " \n " + interviewerLastName + " \n " + interviewerEmail + " \n 1 \n";
+        final String getInterviewerCommand = "2 \n " + interviewerEmail + "\n ";
+        final String exitCommand = "3 \n";
+        provideInput(addNewInterviewerCommand + getInterviewerCommand + exitCommand);
 
-    public void save(
-            String name,
-            String lastName,
-            String email,
-            Boolean isActive
-    ) {
-        if (!name.equals(""))
-            this.name = name;
+        Menu.main(new String[0]);
+        final String output = getOutput();
 
-        if (!lastName.equals(""))
-            this.lastName = lastName;
-
-        if (!email.equals(""))
-            this.email = email;
-
-        this.isActive = isActive;
-
-        data.add(this);
-    }
-
-    public static Interviewer getByEmail(String email) {
-        for (Interviewer interviewer : data) {
-            if (interviewer.email.equals(email))
-                return interviewer;
-        }
-
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        return "\nID: " + this.id +
-                "\nName: " + this.name +
-                "\nLast Name: " + this.lastName +
-                "\nEmail: " + this.email +
-                "\nIs Active: " + this.isActive + "\n";
+        assertTrue(output.contains(interviewerName));
+        assertTrue(output.contains(interviewerLastName));
+        assertTrue(output.contains(interviewerEmail));
     }
 }
 
