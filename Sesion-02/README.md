@@ -112,6 +112,9 @@ Tambien podemos aplicar las siguientes tecnicas de integración
 
 Ahora, vamos a documentar nuestro set de pruebas para identificar los casos que se deben tener en cuenta para ejecutar. En este ejemplo vemos que información es requerida [Ejemplo 03: Documentar un set de pruebas](./Ejemplo-03)
 
+Realicemos ahora nuestro reto final de la sesión donde tendremos un modelo de datos para entrevistas [Reto 02: Modelo de datos para entrevistas](./Reto-02)
+
+
 ---
 
 ### Postwork :memo:
