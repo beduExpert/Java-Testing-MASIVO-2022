@@ -2,7 +2,7 @@
 
 ## :dart: Objetivos
 
-- PENDIENTE
+- Elaborar el menu en java para dar de alta y consultar un entrevistador.
 
 ## ⚙ Requisitos
 
