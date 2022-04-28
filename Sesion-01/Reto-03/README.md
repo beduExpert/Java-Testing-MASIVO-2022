@@ -2,7 +2,8 @@
 
 ## :dart: Objetivos
 
-- PENDIENTE
+- Añadir persistencia de datos a las pruebas para que los datos se conserven de alguna manera.
+- Hacer uso de entrevistadores en archivos para lectura y escritura de datos.
 
 ## ⚙ Requisitos
 
@@ -34,8 +35,11 @@ Utilizando nuestro código del Reto 2, debemos realizar la persistencia de datos
 <details>
   <summary>Solución</summary>
 
+  Así deben quedar nuestras clases Interviewer.java y Interviewer.Test
+  
 Interviewer.java
 
+  ``` java
 package com.test.interviewer;
 
 import java.io.*;
@@ -157,8 +161,11 @@ public class Interviewer implements Serializable {
         }
     }
 }
+  ``` 
+  
 InterviewerTest.java
 
+  ``` java
 package com.test.interviewer;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -263,5 +270,5 @@ public class InterviewerTest {
         assertNull(result, "Interviewer should not be found");
     }
 }
-
+``` 
 </details>
