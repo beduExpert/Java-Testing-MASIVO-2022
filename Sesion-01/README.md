@@ -115,6 +115,8 @@ Se prueba una sola clase, objeto, o método. El objetivo es verificar las condic
 
 A continuación se puede ver como se prueba un flujo para obtener la información de un entrevistador [Ejemplo 02: Probar flujo para obtener info de un entrevistador](./Ejemplo-02)
 
+Ahora realizaremos el reto de prueba de software [Reto 02: Probando nuestro software](./Reto-02)
+
 ---
 ### <ins>Integración Continua</ins>
 
@@ -167,6 +169,7 @@ Algunos puntos importantes sobre las pruebas continuas:
 
 En este ejemplo veremos como hacer una integración continua a un pequeño código con Github [Ejemplo 03: Repositorio en GitHub](./Ejemplo-03)
 
+Finalmente vamos a añadir persistencia de datos en nuestro último reto de la sesión [Reto 03: Añadir persistencia de datos](./Reto-03)
 
 ## Postwork :memo:
 
