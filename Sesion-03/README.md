@@ -29,15 +29,16 @@ Entre las múltiples razones que podemos encontrar para utilizar JUnit 5 podemos
 
 El siguiente ejemplo muestra las diferencias entre JUnit 4 y 5 a nivel de arquitectura, aserciones, entre otros [Ejemplo 01: Diferencias entre JUnit 4 y JUnit 5](./Ejemplo-01)
 
-Con base en el ejemplo anterior, vamos a desarrollar el primer reto de esta sesión [Reto 01: Altas y consultas de entrevistadores](./Reto-01)
+Con base en el ejemplo anterior, vamos a desarrollar el primer reto de esta sesión [Reto 01: Migrar pruebas de JUnit 4 a JUnit5](./Reto-01)
 
 ---
 ### <ins>Ejecución condicional de las pruebas</ins>
 
 La API de extensión ExecutionCondition en JUnit Jupiter permite a los desarrolladores habilitar o deshabilitar un contenedor o probar en función de ciertas condiciones mediante programación. El ejemplo más simple de tal condición es la DisabledCondition incorporada que admite la anotación @Disabled (consulte Disabling Tests)
 
-En el siguiente ejemplo veremos los diferentes condicionales que se pueden manejar para JUnit [Ejemplo 02: Diferencias entre JUnit 4 y JUnit 5]
+En el siguiente ejemplo veremos los diferentes condicionales que se pueden manejar para JUnit [Ejemplo 02: Diferencias entre JUnit 4 y JUnit 5](./Ejemplo-02)
 
+Para este reto vamos a realizar pruebas unitarias con JUnit [Reto 02: Pruebas unitarias con JUnit](./Reto-02)
 
 ---
 ### <ins> Prueba con TestNG </ins>
