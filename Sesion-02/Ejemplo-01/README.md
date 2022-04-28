@@ -2,7 +2,7 @@
 
 ## :dart: Objetivo
 
-- Demostrar la forma de realizar pruebas de integración
+- Demostrar la forma de realizar pruebas de integración para Java
 
 ## Desarrollo
 
@@ -26,7 +26,7 @@ Ahora, habiendo visto la arquitectura de toda la aplicación web, como una sola 
 
 Las preguntas aquí son:
 
-- <¿Cómo leerán e interpretarán el módulo BL, VAL y CNT los datos ingresados ​​en el módulo UI?
+- ¿Cómo leerán e interpretarán el módulo BL, VAL y CNT los datos ingresados ​​en el módulo UI?
 - ¿El módulo BL, VAL y CNT está recibiendo los datos correctos de la interfaz de usuario?
 - ¿En qué formato se transfieren los datos de BL, VAL y CNT al módulo EQ?
 - ¿Cómo leerá el EQ los datos y extraerá la consulta?
