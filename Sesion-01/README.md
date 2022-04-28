@@ -70,15 +70,17 @@ La ejecución de las pruebas de software se puede definir como la ejecuciÃ³n d
 #### Verde, pasa
 
 Se obtienen los resultados esperados cuando se ejecuta el caso de prueba sobre el SUT. 
-TambiÃ©n pueden existir falsos negativos, que es cuando se obtiene el resultados esperado aunque el SUT no estÃ© funcionando como deberÃ­a con algunos error o fallos que pueden pasar desapercibidos. Usualmente estos fallos se apareceren en producciÃ³n.
+También pueden existir falsos negativos, que es cuando se obtiene el resultados esperado aunque el SUT no está funcionando como debería con algunos error o fallos que pueden pasar desapercibidos. Usualmente estos fallos se apareceren en producción.
 
 #### Rojo, no pasa
 
-ExistiÃ³ un fallo en la prueba, quiere decir que los resultados esperados cuando se ejecuta el caso de la prueba sobre el SUT, no se cumplieron. AquÃ­ pueden existir dos casos:
-- Error en la prueba: Hubo algÃºn error en la ejecuciÃ³n de la prueba. Suelen ser problemas locales fÃ¡ciles de detectar.
+Existió un fallo en la prueba, quiere decir que los resultados esperados cuando se ejecuta el caso de la prueba sobre el SUT, no se cumplieron. Aquí pueden existir dos casos:
+- Error en la prueba: Hubo algún error en la ejecución de la prueba. Suelen ser problemas locales fáciles de detectar.
 - Falso Positivo: Se produce un error aunque el SUT funcione correctamente. La prueba debe ser arreglada ajustandose de mejor manera al SUT.
 
 El siguiente ejemplo muestra como probar un flujo cuando se agrega un nuevo entrevistador [Ejemplo 01: Probar el flujo para añadir un nuevo entrevistador](./Ejemplo-01)
+
+Con base en el ejemplo anterior, vamos a desarrollar el primer reto de esta sesión [Reto 01: Altas y consultas de entrevistadores](./Reto-01)
 
 ---
 ### <ins>Tipos de Pruebas de Software</ins>
