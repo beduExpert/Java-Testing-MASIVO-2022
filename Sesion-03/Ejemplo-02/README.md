@@ -2,7 +2,7 @@
 
 ## :dart: Objetivo
 
-- Analizar algunas características de JUnit5
+- Analizar algunas características de JUnit5 para pruebas Java
 
 ## ⚙ Requisitos
 
