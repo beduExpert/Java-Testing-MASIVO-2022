@@ -1,4 +1,4 @@
-# Reto 1 - Migrar pruebas de JUnit 4 a JUnit5
+# Reto 2 - Pruebas unitarias con JUnit
 
 ## :dart: Objetivos
 
@@ -22,7 +22,14 @@
 
 ## Desarrollo
 
-Dado el siguiente código de una calculadora básica con pruebas en JUnit 4 migrar las pruebas a JUnit 5.
+Utilizando como base el siguiente código de la calculadora realiza las siguientes pruebas
+
+* Una prueba que solo se ejecute cunado nos encontramos en nuestro sistema operativo actual
+* Una prueba que solo se ejecute en algún sistema operativo diferente a nuestro sistema operativo actual
+* Una prueba que solo se ejecute en el ambiente de desarrollo y configurar nuestras variables de entorno para indicar que estamos en el ambiente de desarrollo
+* Una prueba parametrizada para la suma
+* Una prueba parametrizada para la multiplicación
+* Una prueba con un display name distinto al nombre de la función
 
 Calculator.java
 
@@ -36,53 +43,13 @@ public class Calculator {
     public int multiply(int a, int b) {
         int result = 0;
         for (int i = 0; i < b; i++) {
-            result += add(result,a);
+            result += add(result, a);
         }
         return result;
     }
 }
 ```
 
-CalculatorTest.java
-
-```java
-public class CalculatorTest {
-    private int a,b;
-    
-    
-    @Before
-    public void setUp(){
-        a = ThreadLocalRandom.current().nextInt();
-        b = ThreadLocalRandom.current().nextInt();
-    }
-
-    @Test
-    public void testAdd() {       
-        int result = calculator.add(a, b);
-
-        assertEquals("Resultado incorrecto de la suma", a + b, result);
-    }
-
-    @Test(expected = Exception.class)
-    public void testAddThrowsExceptionWhenIsCalledWithInvalidParams() {
-        String c = "hello";
-        int result = calculator.add(a, c);
-
-        assertEquals("Resultado incorrecto de la suma", a + b, result);
-    }
-
-    @Test
-    public void testMultiply() {
-        int additionResult = calculator.add(a, b);
-
-        assumeNotNull(additionResult);
-
-        int multiplicationResult = calculator.multiply(a, b);
-
-        Assertions.assertEquals("Resultado incorrecto de la multiplicación",a * b, multiplicationResult);
-    }
-}
-```
 
 <details>
   <summary>Solución</summary>
