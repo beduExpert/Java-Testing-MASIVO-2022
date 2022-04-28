@@ -1,4 +1,4 @@
-# Ejemplo # - Diferencias entre JUnit 4 y 5
+# Ejemplo # 1 - Diferencias entre JUnit 4 y 5
 
 ## :dart: Objetivos
 
@@ -13,14 +13,6 @@
 
 
 ## Desarrollo
-
-### Razones para migrar de JUnit 4 a JUnit 5
-
-Entre las múltiples razones que podemos encontrar para utilizar JUnit 5 podemos encontrar: 
-- JUnit 5 aprovecha las características de Java 8 o posterior, como las funciones lambda, lo que hace que las pruebas sean más potentes y fáciles de mantener.
-- JUnit 5 ha agregado algunas características nuevas muy útiles para describir, organizar y ejecutar pruebas. Por ejemplo, las pruebas obtienen mejores nombres para mostrar y se pueden organizar jerárquicamente.
-- JUnit 5 está organizado en varias bibliotecas, por lo que solo se importan a su proyecto las funciones que necesita. Con sistemas de compilación como Maven y Gradle, incluir las bibliotecas adecuadas es fácil.
-- JUnit 5 puede usar más de una extensión a la vez, lo que JUnit 4 no podría (solo se puede usar un corredor a la vez). Esto significa que puede combinar fácilmente la extensión Spring con otras extensiones (como su propia extensión personalizada).
 
 ### Diferencias entre JUnit 4 y JUnit 5
 
