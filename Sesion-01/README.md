@@ -81,9 +81,37 @@ ExistiÃ³ un fallo en la prueba, quiere decir que los resultados esperados cuan
 El siguiente ejemplo muestra como probar un flujo cuando se agrega un nuevo entrevistador [Ejemplo 01: Probar el flujo para añadir un nuevo entrevistador](./Ejemplo-01)
 
 ---
-### <ins>Ejemplo de estructura de código</ins>
+### <ins>Tipos de Pruebas de Software</ins>
 
-En este ejemplo podemos identificar como se estructura y se desarrolla un flujo de pruebas [Ejemplo 02: Estructura de código](./Ejemplo-02)
+Existen diferentes tipos de pruebas de software, en este documento se presentan los tipos según el SUT:
+
+- Aceptación
+- Sistema
+- Integración
+- Componente
+- Unitaria
+
+#### Aceptación
+
+Se prueba el sistema completo, desde la interfaz hasta la base de datos o de al menos alguna parte del sistema que sea funcional. El objetivo es validar los requireimientos iniciales como son los casos de uso, historias de usuario, etc. Quienes realizan estas pruebas usualmente son los usuarios finales que no formaron parte del desarrollo.
+
+#### Sistema
+
+Se prueba el sistema completo, desde la interfaz hasta la base de datos o de al menos alguna parte del sistema que sea funcional. El objetivo es validar los requireimientos iniciales como son los casos de uso, historias de usuario, etc. Quienes realizan estas pruebas son personas dedicadas a las pruebas que pueden involucrar al usuario, pero no formaron parte del desarrollo.
+
+#### Integración
+
+Se prueban componentes del sistema o subsistemas. El objetivo es verificar la comunicación entre los componentes del sistema o sus subsistemas. Quienes realizan estas pruebas son los desarrolladores incolucrando al usuario.
+
+#### Componente
+
+Se prueban grupos o partes del sistema que en conjunto hacen funcionar un componente o servicio. El objetivo es verificar el funcionamiento correto e independiente de los componentes. Quienes realizan estas pruebas son los desarrolladores incolucrando al usuario.
+
+#### Unitaria
+
+Se prueba una sola clase, objeto, o método. El objetivo es verificar las condiciones del diseño y documentar su comportamiento. Quienes realizan estas pruebas son los desarrolladores incolucrando al usuario.
+
+A continuación se puede ver como se prueba un flujo para obtener la información de un entrevistador [Ejemplo 02: Probar flujo para obtener info de un entrevistador](./Ejemplo-02)
 
 ---
 ### <ins>Integración Continua</ins>
