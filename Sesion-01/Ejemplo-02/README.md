@@ -1,8 +1,8 @@
-# Ejemplo 1 - Probar el flujo para añadir un nuevo entrevistador
+# Ejemplo 2 - Probar el flujo para obtener la información de un entrevistador
 
 ## :dart: Objetivo
 
-* Ejecutar una prueba para un flujo donde se agrega un nuevo entrevistador.
+* PENDIENTE
 
 ## ⚙ Requisitos
 
@@ -18,37 +18,8 @@
 
 **Probar el flujo para añadir un nuevo entrevistador**
 
-Añadir JUnit (5.7.2) como dependencia en nuestro archivo `build.gradle`
+InterviewerTest.java
 
-`build.gradle`
-```
-plugins {
-    id 'java'
-}
-
-group 'org.example'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-test {
-    useJUnitPlatform()
-}
-
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
-}
-
-```
-
-
-`InterviewerTest.java`
-```java
 package com.test.interviewer;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -60,32 +31,66 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class InterviewerTest {
-  static String existingInterviewerName = "First";
-  static String existingInterviewerLastName = "User";
-  static String existingInterviewerEmail =  "first@email.com";
+    static String existingInterviewerName = "First";
+    static String existingInterviewerLastName = "User";
+    static String existingInterviewerEmail =  "first@email.com";
 
-  @BeforeEach
-  public void setUp() throws Exception {
-    Interviewer.data = new ArrayList<>();
-  }
+    @BeforeEach
+    public void setUp() throws Exception {
+        Interviewer.data = new ArrayList<>();
 
-  @Test
-  public void add() {
-    Interviewer interviewer = new Interviewer(
-            "Test",
-            "User",
-            "any@email.com",
-            true
-    );
+        // We insert a user for testing delete and save
+        Interviewer.data.add(new Interviewer(
+                existingInterviewerName,
+                existingInterviewerLastName,
+                existingInterviewerEmail,
+                true
+        ));
+    }
 
-    interviewer.add();
+    @Test
+    public void add() {
+        Interviewer interviewer = new Interviewer(
+                "Test",
+                "User",
+                "any@email.com",
+                true
+        );
 
-    int expectedId = Interviewer.data.size();
-    assertEquals(
-            expectedId,
-            interviewer.id,
-            "Interviewer ID should be the new List's size"
-    );
-  }
+        interviewer.add();
+
+        int expectedId = Interviewer.data.size();
+        assertEquals(
+                expectedId,
+                interviewer.id,
+                "Interviewer ID should be the new List's size"
+        );
+    }
+
+
+    @Test
+    public void getByEmail() {
+        Interviewer result = Interviewer.getByEmail(existingInterviewerEmail);
+
+        assertNotNull(result, "Interviewer should be found");
+        assertEquals(
+                existingInterviewerName,
+                result.name,
+                "Unexpected Interviewer Name"
+        );
+        assertEquals(
+                existingInterviewerLastName,
+                result.lastName,
+                "Unexpected Interviewer Last Name"
+        );
+    }
+
+    @Test
+    public void getByNonExistingEmail() {
+        String nonExistingEmail = "nonexisting@email.com";
+
+        Interviewer result = Interviewer.getByEmail(nonExistingEmail);
+
+        assertNull(result, "Interviewer should not be found");
+    }
 }
-```
