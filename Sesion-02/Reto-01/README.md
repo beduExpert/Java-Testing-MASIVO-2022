@@ -1,8 +1,8 @@
-# Reto 1 - Altas y consultas de entrevistadores
+# Reto 1 - Bajas de entrevistadores
 
 ## :dart: Objetivos
 
-- Elaborar el menu en java para dar de alta y consultar un entrevistador.
+- Elaborar el menu en java para dar de baja un entrevistador.
 
 ## ⚙ Requisitos
 
@@ -22,19 +22,17 @@
 
 La empresa ABC Technologies desea realizar un sistema que le permita automatizar algunas partes de su proceso para agendar entrevistas técnicas.
 
-El project manager ha definido como objetivo para este sprint implementar un sistema que cumpla con las siguientes características:
+El project manager ha definido como objetivo para este sprint añadir las siguientes características a nuestro sistema actual:
 
-Mediante terminal permite agregar nuevos entrevistadores.
-Mediante terminal se pueden consultar a los entrevistadores existentes en el sistema.
-Algunos de los datos que se esperan de un entrevistador son: correo, nombre completo, tecnologías, entre otras.
-La persistencia de datos no está en el alcance de este sprint, por lo que los datos serán efímeros viviendo solo en memoria.
+- Mediante terminal permite eliminar entrevistadores existentes.
+- El usuario ingresará el correo electrónico del entrevistador a eliminar
 
 ### Instrucciones:
-- Crear un repositorio en la cuenta de github de cualquiera de los integrantes y añadir a los demás como colaboradores.
-- Durante el curso utilizaremos gradle, por lo que te recomendamos crear el proyecto usando gradle
+
+- Añadir una opción en nuestro menu que permita eliminar entrevistadores
+- Se deben incluir pruebas de esta funcionalidad
 - Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa en los requerimientos dados
 - Hacer push de sus cambios a su repositorio
-- Todos los integrantes del equipo deben clonar el repositorio en su computadora
 
 <details>
   <summary>Solución</summary>
@@ -56,6 +54,7 @@ public class Menu {
     public Menu() {
         sc = new Scanner(System.in);
         Interviewer.data = new ArrayList<Interviewer>();
+        Interviewer.loadDataFromFile();
 
         showMainMenu();
     }
@@ -63,11 +62,13 @@ public class Menu {
     public void showMainMenu() {
         int option = 0;
 
-        while (option != 3) {
+        while (option != 5 ) {
             System.out.println("Seleccione la operacion a realizar:");
             System.out.println("1. Dar de alta un entrevistador");
             System.out.println("2. Consultar un entrevistador");
-            System.out.println("3. Salir");
+            System.out.println("3. Modificar un entrevistador");
+            System.out.println("4. Eliminar un entrevistador");
+            System.out.println("5. Salir");
 
             option = sc.nextInt();
             sc.nextLine();
@@ -79,9 +80,14 @@ public class Menu {
                 case 2:
                     searchInterviewer();
                     break;
+                case 3:
+                    modifyInterviewer();
+                    break;
+                case 4:
+                    deleteInterviewer();
+                    break;
             }
-        }
-        ;
+        };
 
         System.out.println("Programa terminado");
     }
@@ -117,15 +123,133 @@ public class Menu {
         }
     }
 
+    public void modifyInterviewer() {
+        System.out.println("Ingrese el email del entrevistador a modificar:");
+        String email = sc.nextLine();
+
+        Interviewer interviewer = Interviewer.getByEmail(email);
+
+        if (interviewer != null) {
+            System.out.println("Entrevistador encontrado:");
+            System.out.println(interviewer.toString());
+
+            System.out.println("Ingrese el nuevo nombre del entrevistador: (Enter para mantener actual)");
+            String name = sc.nextLine();
+            System.out.println("Ingrese el nuevo apellido del entrevistador: (Enter para mantener actual)");
+            String lastName = sc.nextLine();
+            System.out.println("Ingrese el nuevo email del entrevistador: (Enter para mantener actual)");
+            String newEmail = sc.nextLine();
+            System.out.println("El entrevistador se encuentra activo? (1=Si/2=No)");
+            Boolean isActive = sc.nextInt() == 1;
+            sc.nextLine();
+
+            interviewer.save(name, lastName, newEmail, isActive);
+
+        } else {
+            System.out.println("Entrevistador no encontrado");
+        }
+    }
+
+    public void deleteInterviewer() {
+        System.out.println("Ingrese el email del entrevistador a eliminar:");
+        String email = sc.nextLine();
+
+        Interviewer interviewer = Interviewer.getByEmail(email);
+        try {
+            interviewer.delete();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
         new Menu();
     }
 }
-  
   ``` 
-  
-Nuestro método save se encarga de guardar el nuevo entrevistador dentro del arreglo de entrevistadores.
-El método getByEmail permite buscar entrevistadores existentes.
+    
+MenuTest.java
+
+  ``` java
+package com.test.interviewer;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class MenuTest {
+    private final InputStream systemIn = System.in;
+    private final PrintStream systemOut = System.out;
+    private final String exitCommand = "5 \n";
+
+    private ByteArrayInputStream testIn;
+    private ByteArrayOutputStream testOut;
+
+    @BeforeEach
+    public void setUpOutput() {
+        testOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOut));
+    }
+
+    private void provideInput(String data) {
+        testIn = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testIn);
+    }
+
+    private String getOutput() {
+        return testOut.toString();
+    }
+
+    @AfterEach
+    public void restoreSystemInputOutput() {
+        System.setIn(systemIn);
+        System.setOut(systemOut);
+    }
+
+
+    @Test
+    public void addNewInterviewer() {
+        final String interviewerName = "Interviewer Name";
+        final String interviewerLastName = "Interviewer Lastname";
+        final String interviewerEmail = "Interviewer Email";
+        final String addNewInterviewerCommand = "1 \n " + interviewerName + " \n " + interviewerLastName + " \n " + interviewerEmail + " \n 1 \n" + exitCommand;
+        provideInput(addNewInterviewerCommand);
+
+        Menu.main(new String[0]);
+        final String output = getOutput();
+
+        assertTrue(output.contains(interviewerName));
+        assertTrue(output.contains(interviewerLastName));
+        assertTrue(output.contains(interviewerEmail));
+    }
+
+    @Test
+    public void getInterviewer() {
+        final String interviewerName = "Interviewer Name";
+        final String interviewerLastName = "Interviewer Lastname";
+        final String interviewerEmail = "interviewer@mail.com";
+        final String addNewInterviewerCommand = "1 \n " + interviewerName + " \n " + interviewerLastName + " \n " + interviewerEmail + " \n 1 \n";
+        final String getInterviewerCommand = "2 \n " + interviewerEmail + "\n ";
+        provideInput(addNewInterviewerCommand + getInterviewerCommand + exitCommand);
+
+        Menu.main(new String[0]);
+        final String output = getOutput();
+
+        assertTrue(output.contains(interviewerName));
+        assertTrue(output.contains(interviewerLastName));
+        assertTrue(output.contains(interviewerEmail));
+    }
+
+
+}
+  ``` 
   
 Interviewer.java
 
@@ -159,7 +283,19 @@ public class Interviewer implements Serializable {
 
     public Interviewer add() {
         data.add(this);
+        Interviewer.saveDataToFile();
         return this;
+    }
+
+    public void delete() throws Exception{
+        Interviewer interviewer = Interviewer.getByEmail(this.email);
+
+        if (interviewer != null) {
+            data.remove(this);
+            Interviewer.saveDataToFile();
+        }
+        else
+            throw new Exception("Interviewer not found");
     }
 
     public void save(
@@ -168,6 +304,13 @@ public class Interviewer implements Serializable {
             String email,
             Boolean isActive
     ) {
+        try {
+            this.delete();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
         if (!name.equals(""))
             this.name = name;
 
@@ -183,7 +326,7 @@ public class Interviewer implements Serializable {
     }
 
     public static Interviewer getByEmail(String email) {
-        for (Interviewer interviewer : data) {
+        for (Interviewer interviewer: data) {
             if (interviewer.email.equals(email))
                 return interviewer;
         }
@@ -198,6 +341,171 @@ public class Interviewer implements Serializable {
                 "\nLast Name: " + this.lastName +
                 "\nEmail: " + this.email +
                 "\nIs Active: " + this.isActive + "\n";
+    }
+
+    public static void saveDataToFile() {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("./interviewers");
+            ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
+
+            outputStream.writeObject(Interviewer.data);
+
+            outputStream.close();
+            fileOutputStream.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
+    public static void loadDataFromFile() {
+        try {
+            FileInputStream fileInputStream = new FileInputStream("./interviewers");
+            ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);
+
+            ArrayList<Interviewer> fileData = (ArrayList<Interviewer>) inputStream.readObject();
+
+            Interviewer.data.clear();
+            Interviewer.data.addAll(fileData);
+
+            inputStream.close();
+            fileInputStream.close();
+        } catch (Exception e) {
+            if (!e.getMessage().contains("No such file or directory"))
+                e.printStackTrace();
+        }
+    }
+
+}
+  ``` 
+  
+Añadimos las pruebas correspondientes para eliminar y modificar un entrevistador. 
+ 
+InterviewerTest.java
+
+  ``` java
+package com.test.interviewer;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
+public class InterviewerTest {
+    static String existingInterviewerName = "First";
+    static String existingInterviewerLastName = "User";
+    static String existingInterviewerEmail = "first@email.com";
+
+    @BeforeEach
+    public void setUp() throws Exception {
+        Interviewer.data = new ArrayList<>();
+
+        // We insert a user for testing delete and save
+        Interviewer.data.add(new Interviewer(
+                existingInterviewerName,
+                existingInterviewerLastName,
+                existingInterviewerEmail,
+                true
+        ));
+    }
+
+    @Test
+    public void add() {
+        Interviewer interviewer = new Interviewer(
+                "Test",
+                "User",
+                "any@email.com",
+                true
+        );
+
+        interviewer.add();
+
+        int expectedId = Interviewer.data.size();
+        assertEquals(
+                expectedId,
+                interviewer.id,
+                "Interviewer ID should be the new List's size"
+        );
+    }
+
+
+    @Test
+    public void save() {
+        int originalListSize = Interviewer.data.size();
+        String expectedLastName = "New";
+        Interviewer existingInterviewer = Interviewer.data.get(0);
+        System.out.println(Interviewer.data.size());
+        existingInterviewer.save("", expectedLastName, "", true);
+
+        int newListSize = Interviewer.data.size();
+        System.out.println(Interviewer.data.size());
+        int lastInterviewerIndex = newListSize - 1;
+        Interviewer latestInterviewer = Interviewer.data.get(lastInterviewerIndex);
+
+        assertEquals(
+                originalListSize,
+                newListSize,
+                "List size should be the same"
+        );
+        assertEquals(
+                expectedLastName,
+                latestInterviewer.lastName,
+                "Last Name should have been updated"
+        );
+        assertEquals(
+                existingInterviewer.name,
+                latestInterviewer.name,
+                "Name should have not been updated"
+        );
+    }
+
+    @Test
+    public void getByEmail() {
+        Interviewer result = Interviewer.getByEmail(existingInterviewerEmail);
+
+        assertNotNull(result, "Interviewer should be found");
+        assertEquals(
+                existingInterviewerName,
+                result.name,
+                "Unexpected Interviewer Name"
+        );
+        assertEquals(
+                existingInterviewerLastName,
+                result.lastName,
+                "Unexpected Interviewer Last Name"
+        );
+    }
+
+    @Test
+    public void getByNonExistingEmail() {
+        String nonExistingEmail = "nonexisting@email.com";
+
+        Interviewer result = Interviewer.getByEmail(nonExistingEmail);
+
+        assertNull(result, "Interviewer should not be found");
+    }
+
+    @Test
+    public void delete() {
+        Interviewer existingInterviewer = Interviewer.data.get(0);
+
+        int expectedSize = Interviewer.data.size() - 1;
+
+        try {
+            existingInterviewer.delete();
+        } catch (Exception e) {
+            fail("Unexpected Exception received: " + e.getMessage());
+        }
+
+        int actualSize = Interviewer.data.size();
+
+        assertEquals(
+                expectedSize,
+                actualSize,
+                "List should be smaller"
+        );
     }
 }
 ``` 
