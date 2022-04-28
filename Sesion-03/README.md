@@ -71,6 +71,7 @@ La mayoría de los usuarios de Selenium usan TestNg más que Junit debido a sus 
 
 A continuación veremos un ejemplo de uso de TestNG en JAVA [Ejemplo 03: TestNG](./Ejemplo-03)
 
+En este último reto de la sesión veremos como hacer pruebas con selenium y TestNG [Reto 03: Pruebas TestNG con Selenium](./Reto-03)
 
 ## Postwork :memo:
 
