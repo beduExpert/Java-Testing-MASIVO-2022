@@ -16,12 +16,6 @@
 
 ## Desarrollo
 
-### Ejecución condicional de las pruebas
-
-La API de extensión ExecutionCondition en JUnit Jupiter permite a los desarrolladores habilitar o deshabilitar un
-contenedor o probar en función de ciertas condiciones mediante programación. El ejemplo más simple de tal condición es
-la DisabledCondition incorporada que admite la anotación @Disabled (consulte Disabling Tests)
-
 #### Condiciones de sistema operativo
 
 Un contenedor o prueba se puede habilitar o deshabilitar en un sistema operativo en particular a través de las
