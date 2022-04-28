@@ -1,10 +1,8 @@
-# Sesión #1: Introduction to Testing
+# Sesión #3: JUnit & TestNG
 
 ## :dart: Objetivos
 
-- Ejecutar prueba para un flujo agregando un nuevo entrevistador.
-- Estructurar de manera correcta un código de programación.
-- Integrar código java con Github
+PENDIENTE
 
 ## ⚙ Requisitos
 
@@ -21,64 +19,15 @@
 
 ## 📂 Contenido
 
-### <ins>El costo de probar software</ins>
+### <ins> Razones para migrar de JUnit 4 a JUnit 5 </ins>
 
->**¡Nota para experto(a)!**
->
-> Seleccionar un par de equipos para que presenten su implementaciÃ³n del reto 1
-> Generar conversaciÃ³n con los siguientes temas: Â¿CÃ³mo fue su proceso de desarrollo? Â¿CÃ³mo saben que su software estÃ¡ funcionando correctamente? Â¿EstÃ¡n probando su software?
+Entre las múltiples razones que podemos encontrar para utilizar JUnit 5 podemos encontrar: 
+- JUnit 5 aprovecha las características de Java 8 o posterior, como las funciones lambda, lo que hace que las pruebas sean más potentes y fáciles de mantener.
+- JUnit 5 ha agregado algunas características nuevas muy útiles para describir, organizar y ejecutar pruebas. Por ejemplo, las pruebas obtienen mejores nombres para mostrar y se pueden organizar jerárquicamente.
+- JUnit 5 está organizado en varias bibliotecas, por lo que solo se importan a su proyecto las funciones que necesita. Con sistemas de compilación como Maven y Gradle, incluir las bibliotecas adecuadas es fácil.
+- JUnit 5 puede usar más de una extensión a la vez, lo que JUnit 4 no podría (solo se puede usar un corredor a la vez). Esto significa que puede combinar fácilmente la extensión Spring con otras extensiones (como su propia extensión personalizada).
 
-La importancia de probar el software y corregir los bugs en un proyecto vas mÃ¡s de una compilaciÃ³n correcta, si no que puede llegar a costar mucho dinero si no se hace en el momento adecuado. Por ejemplo, digamos que una empresa no logrÃ³ detectar y corregir un bug en la etapa de desarrollo, se saltaron la etapa de pruebas por cuestiones de tiempo â€” o incluso para ahorrarse dinero â€” y se lanzÃ³ una aplicaciÃ³n web a producciÃ³n; algunos usuarios comienzan a reportar errores y se tiene que detener el servicio. La empresa tiene que dedicar recursos para revisar el cÃ³digo, encontrar el bug y trabajar en Ã©l, costando hasta **100 veces** mÃ¡s de lo que puedo haber costado en una etapa temprana.
-Â¿Por quÃ© puede llegar a costar tanto?
-Porque el regresar a corregir un error puede desencadenar que otras secciones del cÃ³gido se hayan visto afectados por Ã©ste, o includo por el cambio, desencadenando una *avalancha* de revisiones y posibles nuevos cambios.
-
-Un estudio realizado por el Instituto de Nacional de EstÃ¡ndares de TecnologÃ­a de Estados Unidos, muestra que si un error es encontrado y corregido en la etapa de toma de requerimientos, puede costar unos 100 USD, si es encontrado en la etapa de pruebas, 1,500 UDS y si es encontrado en producciÃ³n, 10,000 USD.
-
-Es por esto que no debemos saltarnos el proceso de probar el software, debemos considerarlo nuestra obligaciÃ³n al desarrollar un proyecto de software. Con Ã©sto nos estaremos ahorrando tiempo y lo que podrÃ­a llegar a ser mucho dinero.
-
-#### Eficiencia y eficacia
-
-Las pruebas, asÃ­ como muchas otras cosas medibles en nuestro entorno, tambiÃ©n adaptan la eficacia y eficiencia a las necesidades del ciclo de vida del software. AquÃ­ se presentan las definiciones de ambos tÃ©rminos para pruebas de software:
-
-- **Eficacia:** Produce resultados deseados. Las pruebas deben ser correctamente ejecutadas y con las siguientes caracterÃ­sticas:
-  - Ejecutarlas tan rÃ¡pidamente como sea posible.
-  - Tratar de descubrir los errores tempranamente.
-  - Encontrar los errores de mayor importancia antes que los de menos importancia.
-- **Eficiencia:** Las pruebas son realizadas sin gastos extremos. Hay dos conceptos que tomar en cuenta:
-  - Costo de Conformidad: Este se paga para en bÃºsqueda de la calidad, son los costos de detecciÃ³n y prevenciÃ³n de errores
-  - Costo de No Conformidad: Este se paga cuÃ¡ndo no se puede conseguir la calidad y generalmente es un costo menor al de Conformidad. 
-
-
-#### ¿Qué es una prueba?
-
-Hemos hablado de la importancia de las pruebas en el ciclo de vida del software, Â¿pero quÃ© es en realidad una prueba y cÃºales son sus caracterÃ­sticas?
-Hay dos etapas y conceptos que nos ayudan a entender lo que son las pruebas de software:
-
-- **Validar:** Con esto podemos evitar irnos por el camino equivocado de acuerdo a las necesidades y peticiones del cliente. Sin la validaciÃ³n, podemos terminar construyendo un software que no sea el solicitado o con las caracterÃ­sticas requeridas.
-- **Verificar:** Con esto podemos asegurar que lo desarrollado cumpla las caracterÃ­sticas de lo requerido, podemos detectar y corregir errores que pudieran desviar el resultado del objetivo.
-
-Conceptos a tomar en cuenta para las pruebas de software:
-- Feature (CaracterÃ­stica): Unidad cuya funcionalidad puede ser comprobable y es construida en la evoluciÃ³n de un proyecto de software.
-- Subject Under Test (SUT): CaracterÃ­stica que se estÃ© probando en el momento.
-- Depended-on Component (DOC): Parte del software que no se estÃ¡ verificando en alguna prueba de las que depende el SUT. 
-- Test Case: (Caso de Prueba): Procedimiento para validar o verificar el SUT.
-
-### Ejecución
-
-La ejecución de las pruebas de software se puede definir como la ejecuciÃ³n de un mÃ©todo o conjunto de pruebas. Esto puede incluir uno o mÃ¡s casos de prueba. La ejecución puede generar dos resultados:
-
-#### Verde, pasa
-
-Se obtienen los resultados esperados cuando se ejecuta el caso de prueba sobre el SUT. 
-También pueden existir falsos negativos, que es cuando se obtiene el resultados esperado aunque el SUT no está funcionando como debería con algunos error o fallos que pueden pasar desapercibidos. Usualmente estos fallos se apareceren en producción.
-
-#### Rojo, no pasa
-
-Existió un fallo en la prueba, quiere decir que los resultados esperados cuando se ejecuta el caso de la prueba sobre el SUT, no se cumplieron. Aquí pueden existir dos casos:
-- Error en la prueba: Hubo algún error en la ejecución de la prueba. Suelen ser problemas locales fáciles de detectar.
-- Falso Positivo: Se produce un error aunque el SUT funcione correctamente. La prueba debe ser arreglada ajustandose de mejor manera al SUT.
-
-El siguiente ejemplo muestra como probar un flujo cuando se agrega un nuevo entrevistador [Ejemplo 01: Probar el flujo para añadir un nuevo entrevistador](./Ejemplo-01)
+El siguiente ejemplo muestra las diferencias entre JUnit 4 y 5 a nivel de arquitectura, aserciones, entre otros [Ejemplo 01: Diferencias entre JUnit 4 y JUnit 5](./Ejemplo-01)
 
 Con base en el ejemplo anterior, vamos a desarrollar el primer reto de esta sesión [Reto 01: Altas y consultas de entrevistadores](./Reto-01)
 
