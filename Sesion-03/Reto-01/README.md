@@ -1,4 +1,4 @@
-# Reto 1 - Altas y consultas de entrevistadores
+# Reto 1 - Migrar pruebas de JUnit 4 a JUnit5
 
 ## :dart: Objetivos
 
@@ -9,6 +9,8 @@
 - IntelliJ IDEA
 - Java
 - Gradle
+- JUnit
+- JUnit 5
 - Code with me
 - Una cuenta de GitHub
 
@@ -20,179 +22,116 @@
 
 ## Desarrollo
 
-La empresa ABC Technologies desea realizar un sistema que le permita automatizar algunas partes de su proceso para agendar entrevistas técnicas.
+Dado el siguiente código de una calculadora básica con pruebas en JUnit 4 migrar las pruebas a JUnit 5.
 
-El project manager ha definido como objetivo para este sprint implementar un sistema que cumpla con las siguientes características:
+Calculator.java
 
-Mediante terminal permite agregar nuevos entrevistadores.
-Mediante terminal se pueden consultar a los entrevistadores existentes en el sistema.
-Algunos de los datos que se esperan de un entrevistador son: correo, nombre completo, tecnologías, entre otras.
-La persistencia de datos no está en el alcance de este sprint, por lo que los datos serán efímeros viviendo solo en memoria.
+```java
+public class Calculator {
 
-### Instrucciones:
-- Crear un repositorio en la cuenta de github de cualquiera de los integrantes y añadir a los demás como colaboradores.
-- Durante el curso utilizaremos gradle, por lo que te recomendamos crear el proyecto usando gradle
-- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa en los requerimientos dados
-- Hacer push de sus cambios a su repositorio
-- Todos los integrantes del equipo deben clonar el repositorio en su computadora
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int multiply(int a, int b) {
+        int result = 0;
+        for (int i = 0; i < b; i++) {
+            result += add(result,a);
+        }
+        return result;
+    }
+}
+```
+
+CalculatorTest.java
+
+```java
+public class CalculatorTest {
+    private int a,b;
+    
+    
+    @Before
+    public void setUp(){
+        a = ThreadLocalRandom.current().nextInt();
+        b = ThreadLocalRandom.current().nextInt();
+    }
+
+    @Test
+    public void testAdd() {       
+        int result = calculator.add(a, b);
+
+        assertEquals("Resultado incorrecto de la suma", a + b, result);
+    }
+
+    @Test(expected = Exception.class)
+    public void testAddThrowsExceptionWhenIsCalledWithInvalidParams() {
+        String c = "hello";
+        int result = calculator.add(a, c);
+
+        assertEquals("Resultado incorrecto de la suma", a + b, result);
+    }
+
+    @Test
+    public void testMultiply() {
+        int additionResult = calculator.add(a, b);
+
+        assumeNotNull(additionResult);
+
+        int multiplicationResult = calculator.multiply(a, b);
+
+        Assertions.assertEquals("Resultado incorrecto de la multiplicación",a * b, multiplicationResult);
+    }
+}
+```
 
 <details>
   <summary>Solución</summary>
 
-1. En nuestro menu mostramos las opciones para dar de alta y consultar un entrevistador.
-2. En este archivo solo vive la logica del menu, dejando la logica propia del proceso de alta o consulta en nuestro archivo Interviewer.java
+Con los conceptos aprendidos en el work, podemos realizar los cambios correspondientes para migrar nuestras pruebas de JUnit 4 a JUnit 5 
   
-Menu.java
+  CalculatorTest.java
+  
+  ```java
+class CalculatorTest {
+    private int a, b;
+    private Calculator calculator;
 
-package com.test.interviewer;
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public class Menu {
-    Scanner sc;
-
-    public Menu() {
-        sc = new Scanner(System.in);
-        Interviewer.data = new ArrayList<Interviewer>();
-
-        showMainMenu();
+        a = ThreadLocalRandom.current().nextInt();
+        b = ThreadLocalRandom.current().nextInt();
     }
 
-    public void showMainMenu() {
-        int option = 0;
+    @Test
+    void testAdd() {
+        int result = calculator.add(a, b);
 
-        while (option != 3) {
-            System.out.println("Seleccione la operacion a realizar:");
-            System.out.println("1. Dar de alta un entrevistador");
-            System.out.println("2. Consultar un entrevistador");
-            System.out.println("3. Salir");
-
-            option = sc.nextInt();
-            sc.nextLine();
-
-            switch (option) {
-                case 1:
-                    addInterviewer();
-                    break;
-                case 2:
-                    searchInterviewer();
-                    break;
-            }
-        }
-        ;
-
-        System.out.println("Programa terminado");
+        assertEquals( a + b, result, "Resultado incorrecto de la suma");
     }
 
-    public void addInterviewer() {
-        System.out.println("Ingrese el nombre del entrevistador: ");
-        String name = sc.nextLine();
-        System.out.println("Ingrese el apellido del entrevistador: ");
-        String lastName = sc.nextLine();
-        System.out.println("Ingrese el email del entrevistador: ");
-        String email = sc.nextLine();
-        System.out.println("El entrevistador se encuentra activo? (1=Si/2=No)");
-        Boolean isActive = sc.nextInt() == 1;
-        sc.nextLine();
+    @Test
+    void testAddThrowsExceptionWhenIsCalledWithInvalidParams() {
+        String c = "hello";
 
-        Interviewer interviewer = new Interviewer(name, lastName, email, isActive);
-        interviewer.add();
+        assertThrows(Exception.class, () -> {
+            int result = calculator.add(a, c);
 
-        System.out.println(interviewer.toString());
+            assertEquals( a + b, result, "Resultado incorrecto de la suma");
+        });
     }
 
-    public void searchInterviewer() {
-        System.out.println("Ingrese el email del entrevistador a consultar:");
-        String email = sc.nextLine();
+    @Test
+    void testMultiply() {
+        int additionResult = calculator.add(a, b);
 
-        Interviewer interviewer = Interviewer.getByEmail(email);
+        assumeTrue(additionResult == a+b);
 
-        if (interviewer != null) {
-            System.out.println("Entrevistador encontrado:");
-            System.out.println(interviewer.toString());
-        } else {
-            System.out.println("Entrevistador no encontrado");
-        }
-    }
+        int multiplicationResult = calculator.multiply(a, b);
 
-    public static void main(String[] args) {
-        new Menu();
+        Assertions.assertEquals(a * b, multiplicationResult, "Resultado incorrecto de la multiplicación");
     }
 }
-Nuestro método save se encarga de guardar el nuevo entrevistador dentro del arreglo de entrevistadores.
-El método getByEmail permite buscar entrevistadores existentes.
-Interviewer.java
-
-package com.test.interviewer;
-
-import java.io.*;
-import java.util.ArrayList;
-
-public class Interviewer implements Serializable {
-    static ArrayList<Interviewer> data;
-
-    int id;
-    String name;
-    String lastName;
-    String email;
-    Boolean isActive;
-
-    public Interviewer(
-            String name,
-            String lastName,
-            String email,
-            Boolean isActive
-    ) {
-        this.id = data.size() + 1;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.isActive = isActive;
-    }
-
-    public Interviewer add() {
-        data.add(this);
-        return this;
-    }
-
-    public void save(
-            String name,
-            String lastName,
-            String email,
-            Boolean isActive
-    ) {
-        if (!name.equals(""))
-            this.name = name;
-
-        if (!lastName.equals(""))
-            this.lastName = lastName;
-
-        if (!email.equals(""))
-            this.email = email;
-
-        this.isActive = isActive;
-
-        data.add(this);
-    }
-
-    public static Interviewer getByEmail(String email) {
-        for (Interviewer interviewer : data) {
-            if (interviewer.email.equals(email))
-                return interviewer;
-        }
-
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        return "\nID: " + this.id +
-                "\nName: " + this.name +
-                "\nLast Name: " + this.lastName +
-                "\nEmail: " + this.email +
-                "\nIs Active: " + this.isActive + "\n";
-    }
-}
-
+```
 </details>
