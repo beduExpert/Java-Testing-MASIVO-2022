@@ -1,4 +1,4 @@
-# Reto 1 - Altas y consultas de entrevistadores
+# Reto 3 - Añadir persistencia de datos
 
 ## :dart: Objetivos
 
@@ -20,108 +20,20 @@
 
 ## Desarrollo
 
-La empresa ABC Technologies desea realizar un sistema que le permita automatizar algunas partes de su proceso para agendar entrevistas técnicas.
+Utilizando nuestro código del Reto 2, debemos realizar la persistencia de datos del sistema desarrollado para la empresa ABC Technologies. El project manager ha definido como objetivo para este sprint añadir las siguientes características a nuestro sistema actual:
 
-El project manager ha definido como objetivo para este sprint implementar un sistema que cumpla con las siguientes características:
-
-Mediante terminal permite agregar nuevos entrevistadores.
-Mediante terminal se pueden consultar a los entrevistadores existentes en el sistema.
-Algunos de los datos que se esperan de un entrevistador son: correo, nombre completo, tecnologías, entre otras.
-La persistencia de datos no está en el alcance de este sprint, por lo que los datos serán efímeros viviendo solo en memoria.
+- Añadir persistencia de datos
+- Se debe poder leer y escribir los datos de los entrevistadores en archivos
 
 ### Instrucciones:
-- Crear un repositorio en la cuenta de github de cualquiera de los integrantes y añadir a los demás como colaboradores.
-- Durante el curso utilizaremos gradle, por lo que te recomendamos crear el proyecto usando gradle
-- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa en los requerimientos dados
+- Añadir al código la persistencia de datos
+- Se deben incluir pruebas de esta funcionalidad
+- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa
 - Hacer push de sus cambios a su repositorio
-- Todos los integrantes del equipo deben clonar el repositorio en su computadora
 
 <details>
   <summary>Solución</summary>
 
-1. En nuestro menu mostramos las opciones para dar de alta y consultar un entrevistador.
-2. En este archivo solo vive la logica del menu, dejando la logica propia del proceso de alta o consulta en nuestro archivo Interviewer.java
-  
-Menu.java
-
-package com.test.interviewer;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public class Menu {
-    Scanner sc;
-
-    public Menu() {
-        sc = new Scanner(System.in);
-        Interviewer.data = new ArrayList<Interviewer>();
-
-        showMainMenu();
-    }
-
-    public void showMainMenu() {
-        int option = 0;
-
-        while (option != 3) {
-            System.out.println("Seleccione la operacion a realizar:");
-            System.out.println("1. Dar de alta un entrevistador");
-            System.out.println("2. Consultar un entrevistador");
-            System.out.println("3. Salir");
-
-            option = sc.nextInt();
-            sc.nextLine();
-
-            switch (option) {
-                case 1:
-                    addInterviewer();
-                    break;
-                case 2:
-                    searchInterviewer();
-                    break;
-            }
-        }
-        ;
-
-        System.out.println("Programa terminado");
-    }
-
-    public void addInterviewer() {
-        System.out.println("Ingrese el nombre del entrevistador: ");
-        String name = sc.nextLine();
-        System.out.println("Ingrese el apellido del entrevistador: ");
-        String lastName = sc.nextLine();
-        System.out.println("Ingrese el email del entrevistador: ");
-        String email = sc.nextLine();
-        System.out.println("El entrevistador se encuentra activo? (1=Si/2=No)");
-        Boolean isActive = sc.nextInt() == 1;
-        sc.nextLine();
-
-        Interviewer interviewer = new Interviewer(name, lastName, email, isActive);
-        interviewer.add();
-
-        System.out.println(interviewer.toString());
-    }
-
-    public void searchInterviewer() {
-        System.out.println("Ingrese el email del entrevistador a consultar:");
-        String email = sc.nextLine();
-
-        Interviewer interviewer = Interviewer.getByEmail(email);
-
-        if (interviewer != null) {
-            System.out.println("Entrevistador encontrado:");
-            System.out.println(interviewer.toString());
-        } else {
-            System.out.println("Entrevistador no encontrado");
-        }
-    }
-
-    public static void main(String[] args) {
-        new Menu();
-    }
-}
-Nuestro método save se encarga de guardar el nuevo entrevistador dentro del arreglo de entrevistadores.
-El método getByEmail permite buscar entrevistadores existentes.
 Interviewer.java
 
 package com.test.interviewer;
@@ -153,7 +65,19 @@ public class Interviewer implements Serializable {
 
     public Interviewer add() {
         data.add(this);
+        Interviewer.saveDataToFile();
         return this;
+    }
+
+    public void delete() throws Exception{
+        Interviewer interviewer = Interviewer.getByEmail(this.email);
+
+        if (interviewer != null) {
+            data.remove(this);
+            Interviewer.saveDataToFile();
+        }
+        else
+            throw new Exception("Interviewer not found");
     }
 
     public void save(
@@ -162,6 +86,13 @@ public class Interviewer implements Serializable {
             String email,
             Boolean isActive
     ) {
+        try {
+            this.delete();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
         if (!name.equals(""))
             this.name = name;
 
@@ -177,7 +108,7 @@ public class Interviewer implements Serializable {
     }
 
     public static Interviewer getByEmail(String email) {
-        for (Interviewer interviewer : data) {
+        for (Interviewer interviewer: data) {
             if (interviewer.email.equals(email))
                 return interviewer;
         }
@@ -192,6 +123,144 @@ public class Interviewer implements Serializable {
                 "\nLast Name: " + this.lastName +
                 "\nEmail: " + this.email +
                 "\nIs Active: " + this.isActive + "\n";
+    }
+
+    public static void saveDataToFile() {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("./interviewers");
+            ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
+
+            outputStream.writeObject(Interviewer.data);
+
+            outputStream.close();
+            fileOutputStream.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
+    public static void loadDataFromFile() {
+        try {
+            FileInputStream fileInputStream = new FileInputStream("./interviewers");
+            ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);
+
+            ArrayList<Interviewer> fileData = (ArrayList<Interviewer>) inputStream.readObject();
+
+            Interviewer.data.clear();
+            Interviewer.data.addAll(fileData);
+
+            inputStream.close();
+            fileInputStream.close();
+        } catch (Exception e) {
+            if (!e.getMessage().contains("No such file or directory"))
+                e.printStackTrace();
+        }
+    }
+}
+InterviewerTest.java
+
+package com.test.interviewer;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
+public class InterviewerTest {
+    static String existingInterviewerName = "First";
+    static String existingInterviewerLastName = "User";
+    static String existingInterviewerEmail = "first@email.com";
+
+    @BeforeEach
+    public void setUp() throws Exception {
+        Interviewer.data = new ArrayList<>();
+
+        // We insert a user for testing delete and save
+        Interviewer.data.add(new Interviewer(
+                existingInterviewerName,
+                existingInterviewerLastName,
+                existingInterviewerEmail,
+                true
+        ));
+    }
+
+    @Test
+    public void add() {
+        Interviewer interviewer = new Interviewer(
+                "Test",
+                "User",
+                "any@email.com",
+                true
+        );
+
+        interviewer.add();
+
+        int expectedId = Interviewer.data.size();
+        assertEquals(
+                expectedId,
+                interviewer.id,
+                "Interviewer ID should be the new List's size"
+        );
+    }
+
+
+    @Test
+    public void save() {
+        int originalListSize = Interviewer.data.size();
+        String expectedLastName = "New";
+        Interviewer existingInterviewer = Interviewer.data.get(0);
+        System.out.println(Interviewer.data.size());
+        existingInterviewer.save("", expectedLastName, "", true);
+
+        int newListSize = Interviewer.data.size();
+        System.out.println(Interviewer.data.size());
+        int lastInterviewerIndex = newListSize - 1;
+        Interviewer latestInterviewer = Interviewer.data.get(lastInterviewerIndex);
+
+        assertEquals(
+                originalListSize,
+                newListSize,
+                "List size should be the same"
+        );
+        assertEquals(
+                expectedLastName,
+                latestInterviewer.lastName,
+                "Last Name should have been updated"
+        );
+        assertEquals(
+                existingInterviewer.name,
+                latestInterviewer.name,
+                "Name should have not been updated"
+        );
+    }
+
+    @Test
+    public void getByEmail() {
+        Interviewer result = Interviewer.getByEmail(existingInterviewerEmail);
+
+        assertNotNull(result, "Interviewer should be found");
+        assertEquals(
+                existingInterviewerName,
+                result.name,
+                "Unexpected Interviewer Name"
+        );
+        assertEquals(
+                existingInterviewerLastName,
+                result.lastName,
+                "Unexpected Interviewer Last Name"
+        );
+    }
+
+    @Test
+    public void getByNonExistingEmail() {
+        String nonExistingEmail = "nonexisting@email.com";
+
+        Interviewer result = Interviewer.getByEmail(nonExistingEmail);
+
+        assertNull(result, "Interviewer should not be found");
     }
 }
 
