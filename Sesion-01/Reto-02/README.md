@@ -2,7 +2,7 @@
 
 ## :dart: Objetivos
 
-- PENDIENTE
+- Realizar pruebas con el fin de obtener un nuevo entrevistador y consultando uno nuevo.
 
 ## ⚙ Requisitos
 
