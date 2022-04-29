@@ -1,8 +1,8 @@
-# Reto 1 - Migrar pruebas de JUnit 4 a JUnit5
+# Reto 1 - Migración de pruebas de JUnit4 a JUnit5
 
 ## :dart: Objetivos
 
-- PENDIENTE
+- Migrar pruebas de JUnit4 a JUnit5 para actualización de código.
 
 ## ⚙ Requisitos
 
