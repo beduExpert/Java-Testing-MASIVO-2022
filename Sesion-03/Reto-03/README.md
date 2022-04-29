@@ -2,7 +2,7 @@
 
 ## :dart: Objetivos
 
-- PENDIENTE
+- Crear prueba con Selenium y TestNG para automatización.
 
 ## ⚙ Requisitos
 
