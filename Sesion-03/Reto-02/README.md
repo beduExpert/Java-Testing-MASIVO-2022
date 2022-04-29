@@ -2,7 +2,7 @@
 
 ## :dart: Objetivos
 
-- PENDIENTE
+- Crear prueba unitaria con JUnit para 2 test.
 
 ## ⚙ Requisitos
 
