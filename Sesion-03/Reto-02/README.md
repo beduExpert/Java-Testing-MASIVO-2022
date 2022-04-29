@@ -22,9 +22,9 @@
 
 ## Desarrollo
 
-Utilizando como base el siguiente código de la calculadora realiza las siguientes pruebas
+Utilizando como base el siguiente código de la calculadora realiza las siguientes pruebas con JUnit
 
-* Una prueba que solo se ejecute cunado nos encontramos en nuestro sistema operativo actual
+* Una prueba que solo se ejecute cuado nos encontramos en nuestro sistema operativo actual
 * Una prueba que solo se ejecute en algún sistema operativo diferente a nuestro sistema operativo actual
 * Una prueba que solo se ejecute en el ambiente de desarrollo y configurar nuestras variables de entorno para indicar que estamos en el ambiente de desarrollo
 * Una prueba parametrizada para la suma
