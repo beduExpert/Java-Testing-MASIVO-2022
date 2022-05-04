@@ -313,24 +313,3 @@ _"Mientras las pruebas se vuelven más especificas, el código se vuelve más ge
 Entonces seguir el camino del código específico no resistirá muchos cambios. Por lo tanto veamos la premisa del
 principio de transformación, para comenzar a generalizar nuestro código.
 
-### La premisa del principio de transformación
-
-Esta premisa podría parecer bastante radical. Sugiere que las refactorizaciones tienen contrapartes llamadas
-transformaciones. Las refactorizaciones son operaciones simples que cambian la estructura del código sin cambiar su
-comportamiento. Las transformaciones son operaciones simples que cambian el comportamiento del código. Las
-transformaciones se pueden utilizar como el único medio para pasar la prueba que actualmente falla en el ciclo
-rojo/verde de refactorización. Las transformaciones tienen una prioridad, o un orden preferido, que si se mantiene,
-mediante el orden de las pruebas, evitará estancamientos o interrupciones prolongadas en el ciclo rojo/verde.
-
-    ({}–>nil) ningún código en absoluto que pasa a código que emplea null
-    (nil->constant)
-    (constant->constant+) una constante simple con una constante mas compleja
-    (constant->scalar) remplazando con una constante con una variable o un argumento
-    (statement->statements) añadiendo masdeclaraciones no condicionales
-    (unconditional->if) dividiendo el camino de ejecución
-    (scalar->array)
-    (array->container)
-    (statement->recursion)
-    (if->while)
-    (expression->function) remplazando una expresióncon una función o un algoritmo
-    (variable->assignment) remplazando el valor de una variable 
