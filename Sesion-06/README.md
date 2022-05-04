@@ -24,7 +24,7 @@
 
 ## 📂 Organización de la clase
 
-- [Ejemplo 01:  Las tres reglas de TDD](./Ejemplo-01)
+- [Ejemplo 01:  Las tres leyes de TDD](./Ejemplo-01)
 - [Ejemplo 02: La premisa del principio de transformación](./Ejemplo-02)
     - [Reto 01: Primera transformación](./Reto-01)
     - [Reto 02: Segunda transformación](./Reto-02)
