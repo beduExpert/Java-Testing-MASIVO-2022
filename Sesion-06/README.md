@@ -57,7 +57,7 @@ Este es un ejemplo que muestra la técnica de programación guiada por las prueb
 
 Estos son los retos con los 4 principios de la transformación para TDD:
 
-    - [Reto 01: Primera transformación](./Reto-01)
+     [Reto 01: Primera transformación](./Reto-01)
     - [Reto 02: Segunda transformación](./Reto-02)
     - [Reto 03: Tercera transformación](./Reto-03)
     - [Reto 04: Cuarta transformación](./Reto-04)
