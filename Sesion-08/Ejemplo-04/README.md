@@ -14,40 +14,6 @@
 
 ## Desarrollo
 
-### Aplicación de pruebas de penetración y seguridad web con ZAP
-
-Hoy en día, la seguridad de las aplicaciones debe estar en el centro de las preocupaciones de las empresas. De hecho,
-tan pronto como una aplicación web (o sitio web) se expone públicamente en Internet, es candidata a un ataque por parte
-de personas malintencionadas. Además, es importante tener en cuenta que la seguridad de la aplicación es aún más
-importante si se utiliza para almacenar datos confidenciales como cuentas bancarias o su información personal.
-
-Para abordar este problema, OWASP (abreviatura de Open Web Application Security
-Project, https://www.owasp.org/index.php/Main_Page) es una organización mundial que estudia los problemas de seguridad
-de las aplicaciones. El objetivo de esta organización es destacar públicamente los problemas de seguridad y las
-vulnerabilidades que se pueden encontrar en un sistema de aplicación. Además de esta valiosa información de seguridad,
-OWASP proporciona recomendaciones, soluciones y herramientas para probar y proteger aplicaciones.
-
-Uno de los proyectos y documentos importantes y útiles proporcionados por OWASP son los 10 principales problemas de
-seguridad de las aplicaciones. Este documento está disponible
-en https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf. Es muy detallado, con una explicación, ejemplos
-y una solución para cada problema de seguridad. En este documento, encontramos que la principal vulnerabilidad de
-seguridad a la que las aplicaciones son más vulnerables es la vulnerabilidad de inyección, como la inyección SQL, que
-consiste en inyectar código o solicitudes en una aplicación para recopilar, eliminar o corromper datos de la aplicación.
-
-También tenemos en este documento otra falla de seguridad conocida, que es Cross-Site Scripting (XSS), que consiste en
-ejecutar código HTML o JavaScript malicioso en el navegador web de un usuario.
-
-El desafío para las empresas es poder automatizar las pruebas de seguridad de sus aplicaciones para protegerlas y tomar
-medidas lo más rápido posible cuando se descubre una falla.
-
-Hay muchas herramientas de prueba de seguridad y penetración disponibles. Una lista muy completa está disponible
-en https://www.owasp.org/index.php/Appendix_A:_Testing_Tools. Entre ellos, aprendimos sobre SonarQube en el capítulo
-anterior, que permite el análisis de código para detectar vulnerabilidades de seguridad.
-
-Otra herramienta en esta lista que es muy interesante es ZAP (abreviatura de Zed Attack
-Proxy, https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), que fue desarrollada por la comunidad OWASP.
-
-Veamos cómo usar ZAP para realizar pruebas de seguridad en nuestras aplicaciones.
 
 ### Uso de ZAP para pruebas de seguridad
 
