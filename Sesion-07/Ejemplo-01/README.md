@@ -1,4 +1,4 @@
-# Ejemplo 3 - Indice de calidad del software
+# Ejemplo 1 - Indice de calidad del software
 
 ## :dart: Objetivos
 
