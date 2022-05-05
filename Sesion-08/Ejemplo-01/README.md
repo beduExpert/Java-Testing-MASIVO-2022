@@ -8,25 +8,7 @@
 
 ## Desarrollo
 
-SonarQube es una herramienta de código abierto de SonarSource (https://www.sonarsource.com/) que está escrita en Java.
-Nos permite realizar análisis de código estático para verificar la calidad y seguridad del código de una aplicación.
-
-SonarQube está diseñado para equipos de desarrolladores y les proporciona un panel e informes que se pueden personalizar
-para que puedan presentar la calidad del código en sus aplicaciones.
-
-Permite el análisis de código estático en una multitud de lenguajes (más de 25), como PHP, Java, .NET, JavaScript,
-Python, etc. La lista completa se puede encontrar en https://www.sonarqube.org/features/multi-languages/. Además del
-análisis de código con problemas de seguridad, code smells y duplicación de código, SonarQube también proporciona
-cobertura de código para pruebas unitarias.
-
-Finalmente, SonarQube se integra muy bien en los pipelines de CI / CD para que pueda automatizar el análisis de código
-durante los commits de código del desarrollador. Esto reduce el riesgo de implementar una aplicación que tiene
-vulnerabilidades de seguridad o una complejidad de código demasiado alta.
-
-Ahora que hemos proporcionado una descripción general de SonarQube, veremos su arquitectura y componentes. Finalmente,
-veremos las diferentes formas de instalarlo.
-
-## Descripción general de la arquitectura SonarQube
+### Descripción general de la arquitectura SonarQube
 
 SonarQube es una herramienta cliente-servidor, lo que significa que su arquitectura se compone de artefactos en el lado
 del servidor y también en el lado del cliente.
