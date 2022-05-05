@@ -1,4 +1,4 @@
-# Ejemplo 1 - Otras métricas
+# Ejemplo 2 - Otras métricas
 
 ## :dart: Objetivos
 
