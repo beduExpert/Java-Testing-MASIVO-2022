@@ -1,4 +1,4 @@
-# Ejemplo 2 - Las 4 métricas clave
+# Ejemplo 3 - Otras métricas
 
 ## :dart: Objetivos
 
@@ -8,38 +8,39 @@
 
 ## Desarrollo
 
-Las cuatro métricas clave
+### Complejidad Ciclomática
 
-Profundicemos un poco más en las cuatro métricas que el equipo de DORA ha identificado como esenciales para el éxito de
-DevOps de una organización. 
+La Complejidad Ciclomática corresponde al número de decisiones que contiene un bloque de código más 1. Este número (
+también llamado número de McCabe) es igual al número de caminos linealmente independientes a través del código. Este
+número se puede utilizar como guía al probar la lógica condicional en bloques.
 
-### Frecuencia de implementación
+Las herramientas suelen hacer un análisis al árbol AST (Abstract Syntax Tree) de un programa para calcular la
+Complejidad Ciclomática.
 
-La frecuencia de implementación se refiere a la cadencia de los lanzamientos exitosos de una organización a
-producción. Los equipos definen el éxito de manera diferente, por lo que la frecuencia de implementación puede medir una
-variedad de cosas, como la frecuencia con la que se implementa el código en producción o la frecuencia con la que se
-publica para los usuarios finales. Independientemente de lo que mida esta métrica equipo por equipo, los equipos de
-élite apuntan a una implementación continua, con múltiples despliegues por día. 
+#### Ejemplos:
 
-### Plazo medio de entrega de cambios
+![img_2.png](img_2.png)
 
-El tiempo medio de espera para los cambios mide el tiempo que tarda un commit en entrar en producción. Ayuda a los
-líderes de ingeniería y DevOps a comprender qué tan saludable es el ciclo de release de sus equipos y si podrían manejar
-una afluencia repentina de solicitudes. Al igual que la frecuencia de implementación, esta métrica proporciona una forma
-de establecer el ritmo de entrega de software en una organización: su velocidad. 
+El programa comienza a ejecutarse en el nodo rojo, luego entra en un bucle (grupo de tres nodos inmediatamente debajo
+del nodo rojo). Al salir del ciclo, hay una declaración condicional (grupo debajo del ciclo), y finalmente el programa
+sale en el nodo azul. Este gráfico tiene 9 aristas, 8 nodos y 1 componente conectado, por lo que la complejidad
+ciclomática del programa es 9 - 8 + 2 * 1 = 3.
 
-### Tiempo medio para recuperarse
+![img_3.png](img_3.png)
 
-¿Cuánto tiempo le toma a un equipo restaurar el servicio en caso de una interrupción no planificada u otro incidente?
-Este punto de datos es el tiempo medio del equipo para recuperarse. Es fundamental poder restaurar el servicio lo más
-rápido posible (con un tiempo medio de recuperación bajo). Los equipos de élite mejoran esta métrica con la ayuda de un
-monitoreo sólido y la implementación de prácticas de entrega progresiva. 
+La misma función que la anterior, representada mediante la formulación alternativa, donde cada punto de salida se
+conecta de nuevo al punto de entrada. Este gráfico tiene 10 bordes, 8 nodos y 1 componente conectado, lo que también da
+como resultado una complejidad ciclomática de 3 utilizando la formulación alternativa (10 - 8 + 1 = 3).
 
-### Tasa de fallas en cambios
+### Indice de mantenibilidad
 
-La tasa de fallas en cambios de un equipo se refiere a la frecuencia con la que sus cambios conducen a fallas en
-producción. Rollbacks, las implementaciones fallidas y los incidentes con soluciones rápidas, independientemente
-de la causa raíz, cuentan para la tasa de fallas en cambios. Al igual que el tiempo medio para recuperarse, esta métrica
-ayuda a medir la estabilidad. ¿Cuánto tiempo del desarrollador se dedica a tareas que no contribuyen al valor
-empresarial? Comprender la tasa de fallas en cambios ayuda a los líderes a decidir dónde invertir en infraestructura
-para respaldar a los equipos de desarrollo.
+El índice de mantenibilidad es una métrica de software que mide qué tan mantenible (fácil de mantener y cambiar) es el
+código fuente. El índice de mantenibilidad se calcula como una fórmula factorizada que consta de SLOC (líneas de código
+fuente), complejidad ciclomática y volumen de Halstead. Se utiliza en varias herramientas métricas de software
+automatizadas, incluido el entorno de desarrollo Microsoft Visual Studio 2010, que utiliza una derivada de escala
+desplazada (0 a 100).
+
+#### Formulas comunes:
+
+![img_4.png](img_4.png)
+
