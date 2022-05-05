@@ -17,28 +17,6 @@
 
 ## Desarrollo
 
-### ¿Qué es la inversión de control?
-
-La inversión de control (Inversion of Control - IOC) es un principio en la ingeniería de software que transfiere el
-control de objetos o partes de un programa a un contenedor o marco. Lo usamos con mayor frecuencia en el contexto de la
-programación orientada a objetos.
-
-A diferencia de la programación tradicional, en la que nuestro código personalizado realiza llamadas a una biblioteca,
-IoC habilita un marco para tomar el control del flujo de un programa y realizar llamadas a nuestro código personalizado.
-Para habilitar esto, los marcos usan abstracciones con comportamiento adicional incorporado. Si queremos agregar nuestro
-propio comportamiento, necesitamos extender las clases del marco o agregar nuestras propias clases.
-
-Las ventajas de esta arquitectura son:
-
-    desvincular la ejecución de una tarea de su implementación
-    facilitando el cambio entre diferentes implementaciones
-    mayor modularidad de un programa
-    Mayor facilidad para probar un programa al aislar un componente o burlarse de sus dependencias y permitir que los componentes se comuniquen a través de contratos.
-
-Podemos lograr la Inversión de Control a través de varios mecanismos tales como: patrón de diseño de estrategia, patrón
-de localizador de servicios, patrón de fábrica e inyección de dependencia (Dependency Injection - DI).
-
-A continuación, veremos DI.
 
 ### ¿Qué es la inyección de dependencias?
 
