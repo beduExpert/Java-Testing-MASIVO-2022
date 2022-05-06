@@ -31,10 +31,10 @@ La persistencia de datos no está en el alcance de este sprint, por lo que los d
 
 ### Instrucciones:
 - Crear un repositorio en la cuenta de github de cualquiera de los integrantes y añadir a los demás como colaboradores.
-- Durante el curso utilizaremos gradle, por lo que te recomendamos crear el proyecto usando gradle
-- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa en los requerimientos dados
-- Hacer push de sus cambios a su repositorio
-- Todos los integrantes del equipo deben clonar el repositorio en su computadora
+- Durante el curso utilizaremos gradle, por lo que te recomendamos crear el proyecto usando gradle.
+- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa en los requerimientos dados.
+- Hacer push de sus cambios a su repositorio.
+- Todos los integrantes del equipo deben clonar el repositorio en su computadora.
 
 <details>
   <summary>Solución</summary>
