@@ -18,9 +18,9 @@ El project manager ha definido como objetivo para este sprint añadir las siguie
     - La información de los entrevistadores se puede modificar desde terminal.
     - La definición de hecho (Definition of Done) establece que todo el código generado debe contar con pruebas unitarias.
 
-Sigue estas instrucciones:
+Sigan las siguientes instrucciones y dividan las actividades entre cada miembro del equipo:
 
-1. Añade la opción número 3 al menú, con el texto: "3. Modificar un entrevistador". 
+1. Añadir la opción número 3 al menú, con el texto: "3. Modificar un entrevistador". 
 
 2. Dentro de nuestro switch generar el case con valor 3 y llamar a la función modifyInterviewer que crearemos a continuación.
 
@@ -37,18 +37,18 @@ Sigue estas instrucciones:
 8. Instalar Github o trabajarlo en línea, iniciar sesión y crear el repositorio.
 
 9. Hacer el versionamiento del código incluyendolo en el repositorio creado.
- 
 
 ### Reflexiones finales 
 
-Una vez que hayas terminado  la actividad responde las siguientes preguntas:
+Una vez que hayan terminado el postwork respondan las siguientes preguntas:
 
-¿Cómo estás creando la prueba para validar que se guardan correctamente los archivos?
-_________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-¿Decidiste probar directamente en los métodos de la clase interviewer o estás probando en el menú?
+¿Cómo crearon la prueba para validar que se guardan correctamente los archivos?
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-¿Crees que existe diferencia entre las pruebas hechas directamente a la clase interviewer y las realizadas al menú? ¿Por qué?
+¿Decidieron probar directamente en los métodos de la clase interviewer o probaron en el menú?
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+¿Creen que existe diferencia entre las pruebas hechas directamente a la clase interviewer y las realizadas al menú? ¿Por qué?
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 **¡Mucho éxito y reta tu potencial!**
