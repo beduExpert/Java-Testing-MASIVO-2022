@@ -7,16 +7,7 @@ utilizaremos distintas herramientas de análisis estático de código.
 
 ## :dart: Objetivo
 
-En este curso obtendrás una visión general de la disciplina de pruebas, entendiendo la necesidad de las
-pruebas del software, los objetivos de las pruebas, así como su cantidad idónea y los conceptos fundamentales de la
-disciplina.
-
-Te familiarizas con distintas herramientas como JUnit, TestNG, Mockito, SonarQube, entre otras.
-
-Identificarás las diferencias entre los distintos tipos de pruebas como: unitarias, de integración, e2e, etc.
-
-Y por último aplicarás una metodología de desarrollo guiada por pruebas como lo es TDD (Test Driven
-Development)
+En este curso implementarás frameworks de prueba para realizar pruebas unitarias, de integración, de caja blanca y caja negra con Java.
 
 ## 💻 Proyecto
 
