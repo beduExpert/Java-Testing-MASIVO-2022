@@ -35,7 +35,7 @@ Las preguntas aquí son:
 - ¿El conjunto de resultados recibido por la EN de la base de datos es correcto y como se esperaba?
 - ¿EN puede enviar la respuesta al módulo BL, VAL y CNT?
 - ¿El módulo de la interfaz de usuario es capaz de leer los datos y mostrarlos adecuadamente en la interfaz?
-- 
+
 En el mundo real, la comunicación de datos se realiza en formato XML. Entonces, cualquier dato que ingrese el usuario en la interfaz de usuario, se convierte a un formato XML.
 
 En nuestro escenario, los datos ingresados ​​en el módulo UI se convierten en un archivo XML que es interpretado por los 3 módulos BL, VAL y CNT. El módulo EN lee el archivo XML resultante generado por los 3 módulos y extrae el SQL y realiza consultas en la base de datos. El módulo EN también recibe el conjunto de resultados y lo convierte en un archivo XML y lo devuelve al módulo UI que convierte los resultados en un formato legible por el usuario y lo muestra.
