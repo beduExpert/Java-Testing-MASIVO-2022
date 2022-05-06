@@ -1,4 +1,4 @@
-# Reto 1 - Pruebas con mockito
+# Reto 2 - Pruebas con mockito
 
 ## :dart: Objetivo
 
