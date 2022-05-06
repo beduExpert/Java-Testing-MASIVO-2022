@@ -27,7 +27,7 @@ El project manager ha definido como objetivo para este sprint añadir las siguie
 
 La definición de hecho (Definition of Done) establece que todo el código generado debe contar con las pruebas unitarias necesarias para validar su correcto funcionamiento.
 
-Sigan las siguientes instrucciones, dividan las actividades de forma equitativa entre cada miembro del equipo y recuerden que dentro de tu paquete principal crea las siguientes clases:
+Sigan las siguientes instrucciones, dividan las actividades de forma equitativa entre cada miembro del equipo y recuerden que dentro de su paquete principal se deben crear las siguientes clases:
 
 1. Crear la clase correspondiente al modelo Candidate.
 
