@@ -30,9 +30,9 @@ El project manager ha definido como objetivo para este sprint realizar las prueb
 - Verificar que los datos vivan en memoria.
 
 ### Instrucciones:
-- Se deben incluir todas las pruebas de esta funcionalidad
-- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa
-- Hacer push de sus cambios a su repositorio
+- Se deben incluir todas las pruebas de esta funcionalidad.
+- Utilizando Code with me o Visual Studio Live Share trabajar de forma colaborativa.
+- Hacer push de sus cambios a su repositorio.
 
 <details>
   <summary>Solución</summary>
