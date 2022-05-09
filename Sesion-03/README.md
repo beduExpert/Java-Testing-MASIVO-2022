@@ -2,8 +2,7 @@
 
 ## :dart: Objetivos
 
-* Ejecutar pruebas con el framework de pruebas de JUnit.
-* Ejecutar pruebas con el framework de pruebas de TestNG.
+* Ejecutar pruebas con el framework de pruebas de JUnit y de TestNG.
 * Crear anotaciones a las pruebas para validación de casos.
 
 ## ⚙ Requisitos
