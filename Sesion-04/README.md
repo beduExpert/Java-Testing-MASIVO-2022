@@ -2,11 +2,9 @@
 
 ## :dart: Objetivos
 
-- Analizar qué son las pruebas de tipo white box testing
-- Analizar qué son las pruebas de tipo black box testing
+- Analizar qué son las pruebas de tipo black and white box testing
 - Comparar y distinguir las diferencias entre black box y white box testing
-- Implementar pruebas de caja negra
-- Implementar pruebas de caja blanca
+- Implementar pruebas de caja negra y blanca
 
 ## ⚙ Requisitos
 
