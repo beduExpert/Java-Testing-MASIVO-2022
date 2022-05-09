@@ -23,7 +23,7 @@ Continuaremos con el desarrollo del software de entrevistadores y exploramos las
 
 ### Indicaciones generales
 
-¿Terminaste la actividad? responde las siguientes preguntas:
+Respondan las siguientes preguntas:
 
 ¿Cuál es la principal diferencia que notan entre las pruebas de caja negra y blanca?
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________________
