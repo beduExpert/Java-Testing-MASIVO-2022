@@ -5,8 +5,8 @@ Recuerda que tambien puedes consultar tu postwork en la App Bedu.
 
 ## 🎯 OBJETIVOS
 
-- Comparar el funcionamiento de JUnit y TestNG en escenarios similares.
-- Analizar el funcionamiento de la ejecución en paralelo en JUnit 5 y en TestNG.
+- Comparen el funcionamiento de JUnit y TestNG en escenarios similares.
+- Analicen el funcionamiento de la ejecución en paralelo en JUnit 5 y en TestNG.
 
 
 ## 🚀 DESARROLLO
