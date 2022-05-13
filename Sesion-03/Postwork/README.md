@@ -5,33 +5,48 @@ Recuerda que tambien puedes consultar tu postwork en la App Bedu.
 
 ## 🎯 OBJETIVOS
 
-- Implementar pruebas de caja negra y blanca
+- Comparar el funcionamiento de JUnit y TestNG en escenarios similares.
+- Analizar el funcionamiento de la ejecución en paralelo en JUnit 5 y en TestNG.
+
 
 ## 🚀 DESARROLLO
 
-Continuaremos con el desarrollo del software de entrevistadores y exploramos las pruebas de caja negra y blanca realizando el siguiente ejercicio:
-- Añadir las pruebas de casos uso generadas durante el Reto 1
-- Diseñar posibles pruebas de caja blanca para el código 
-- Debemos generar pruebas de caja negra y blanca según corresponda
+Antes de comenzar con la actividad te recomendamos revisar el siguiente recurso para que comprendas que hay detrás de la ejecución de pruebas en paralelo utilizando JUnit 5:
 
-### Sigan las siguientes instrucciones y dividan las actividades de forma equitativa entre cada miembro del equipo:
+### Ejecución Paralela
 
-1. Durante el reto 1 generen los casos de uso y sus especificaciones par acumplir con la historia de usuario: añadir entrevistadores.
-2. En el archivo de pruebas añadan las pruebas correspondientes para validar que se cumplan los criterios de aceptación.
-3. Modifiquen el código de alta de entrevistadores de ser necesario.
-4. Repitan los pasos 2 y 3 hasta que todos los criterios de aceptación sean validados con al menos una prueba y todo tus pruebas pasen.
+**Sigan las siguientes instrucciones y dividan las actividades de forma equitativa entre cada miembro del equipo:*
 
-### Indicaciones generales
+1. En su archivo build.grade asegurense de tener junit en su versión 5.3 o superior.
+2. En el mismo archivo asegurense que la configuración test luzca de la siguiente forma.
 
-Respondan las siguientes preguntas:
 
-¿Cuál es la principal diferencia que notan entre las pruebas de caja negra y blanca?
+test {
+    useJUnitPlatform()
+    systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
+}
+
+
+3. Ejecuten las pruebas
+4. Cambien la configuración anterior a false y observen las diferencias en los tiempos de ejecución
+
+Para cerrar nuestro postwork, revisemos el siguiente video que realiza un benchmark de la ejecución en paralelo entre diferentes frameworks de pruebas:
+
+¿Cuál tecnología es más eficiente para ejecutar los tests en paralelo?
+
+
+### Reflexiones finales
+
+¿Terminaron la actividad? respondan las siguientes preguntas:
+
+- ¿Notaron alguna diferencia en el tiempo de ejecución de las pruebas?
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-¿Qué ventajas consideran que tienen unas sobre las otras?
+- ¿Qué ventajas consideran que aporta la ejecución en paralelo?
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-¿Creen que existe alguna desventaja de contar solo con pruebas de caja negra?
+- ¿Creen que existe alguna desventaja de ejecutar nuestras pruebas en paralelo?
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
 
 ¡Mucho éxito y reta tu potencial!
