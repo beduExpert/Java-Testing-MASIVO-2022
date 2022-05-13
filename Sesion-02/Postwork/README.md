@@ -4,11 +4,11 @@
 
 ### 🎯 OBJETIVOS
 
-- Pasar de modelos de datos abstractos (representaciones gráficas), a implementaciones concretas (clases)
-- Aplicar conceptos de reutilización de código
-- Añadir pruebas unitarias adicionales para probar su funcionalidad
-- Aplicar técnicas de diseño de pruebas 
-- Familiarizarse con la herramienta JUNIT.
+- Pasen de modelos de datos abstractos (representaciones gráficas) a implementaciones concretas (clases).
+- Apliquen conceptos de reutilización de código.
+- Incluyan pruebas unitarias adicionales para probar su funcionalidad.
+- Apliquen técnicas de diseño de pruebas.
+- Exploren la herramienta JUNIT.
 
 ### 🚀 DESARROLLO
 
