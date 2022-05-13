@@ -5,7 +5,7 @@ Recuerda que tambien puedes consultar tu postwork en la App Bedu.
 
 ## 🎯 OBJETIVOS
 
-- Implementar pruebas de caja negra y blanca
+- Implementen pruebas de caja negra y blanca
 
 ## 🚀 DESARROLLO
 
